@@ -6,23 +6,19 @@
     <title>2026 제이어스 리쿠르팅 캠페인 - 삿포로</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --primary: #004a99; /* 제이어스 블루 */
-            --accent: #e11d48; 
-            --bg-light: #f8fafc; 
-        }
+        :root { --primary: #004a99; --accent: #e11d48; --bg-light: #f8fafc; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Noto Sans KR', sans-serif; margin: 0; background: var(--bg-light); line-height: 1.8; color: #333; }
         
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.75); box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; display: flex; justify-content: center; padding: 15px 0; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; display: flex; justify-content: center; padding: 15px 0; }
         nav a { text-decoration: none; color: var(--primary); font-weight: bold; margin: 0 20px; }
         
-        /* [수정] 헤더 배경 사진 강제 연결 */
+        /* 메인 헤더: 사진을 더 선명하게 (0.2, 0.3으로 낮춤) */
         header { 
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('1st photo.jpg.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url('1st photo.jpg.jpg');
             background-size: cover; background-position: center; color: white; padding: 180px 20px 140px; text-align: center; 
         }
-        header h1 { margin: 0; font-size: 3.2em; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); font-weight: 700; }
+        header h1 { margin: 0; font-size: 3.2em; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); font-weight: 700; }
         
         .container { max-width: 900px; margin: -60px auto 80px; padding: 0 20px; }
         .section { background: white; padding: 45px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 50px; }
@@ -34,34 +30,28 @@
             overflow: hidden; border: 1px solid #eee;
         }
 
-        /* 사진 위에 흰색 막 (가독성) */
+        /* ⭐ 선명도 조절: 0.9에서 0.7로 낮춰서 사진이 훨씬 잘 보이게 했습니다 */
         .day-box::before {
             content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.88); z-index: 1;
+            background: rgba(255, 255, 255, 0.7); 
+            z-index: 1;
         }
         .day-header, ul { position: relative; z-index: 2; }
 
-        /* [수정] 날짜별 배경 사진 강제 연결 (형의 파일명 기준) */
+        /* 파일명 뒤에 .jpg.jpg가 붙은 형의 현재 상태를 그대로 반영했습니다 */
         .day1 { background-image: url('day1_bg.jpg.jpg'); }
         .day2 { background-image: url('day2_bg.jpg.jpg'); }
         .day3 { background-image: url('day3_bg.jpg.jpg'); }
         .day4 { background-image: url('day4_bg.jpg.jpg'); }
 
         .day-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-        
-        /* [수정] 날짜 라벨 색상을 핑크에서 블루로 변경 */
-        .day-num { 
-            background: var(--primary); 
-            color: white; 
-            padding: 6px 18px; border-radius: 25px; font-weight: bold; font-size: 1.1em; 
-        }
-        
+        .day-num { background: var(--primary); color: white; padding: 6px 18px; border-radius: 25px; font-weight: bold; font-size: 1.1em; }
         .flight-tag { color: var(--accent); font-weight: bold; border: 2px solid var(--accent); padding: 4px 12px; border-radius: 6px; background: white; }
+        
         ul { list-style: none; padding: 0; }
-        ul li { position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1.1em; }
+        ul li { position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1.1em; font-weight: 500; }
         ul li::before { content: '🌸'; position: absolute; left: 0; }
         
-        .info-box { background: #f0f7ff; padding: 30px; border-radius: 15px; border-left: 6px solid var(--primary); }
         .footer { text-align: center; padding: 50px; color: #888; }
     </style>
 </head>
@@ -108,7 +98,7 @@
 
     <div class="section" id="notice">
         <h2>💡 안내 사항</h2>
-        <div class="info-box"><p>• 5월 삿포로는 선선하니 가벼운 외투를 꼭 챙기세요.</p></div>
+        <p>• 5월 삿포로는 선선하니 가벼운 외투를 꼭 챙기세요.</p>
     </div>
     <div class="footer">© 2026 J-US Recruiting Campaign.</div>
 </div>
