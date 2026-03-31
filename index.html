@@ -13,7 +13,7 @@
         nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; display: flex; justify-content: center; padding: 15px 0; }
         nav a { text-decoration: none; color: var(--primary); font-weight: bold; margin: 0 20px; }
         
-        /* 메인 헤더: 사진을 더 선명하게 (0.2, 0.3으로 낮춤) */
+        /* 메인 헤더: 1st photo.jpg. 에 정확히 맞춤 */
         header { 
             background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url('1st photo.jpg.jpg');
             background-size: cover; background-position: center; color: white; padding: 180px 20px 140px; text-align: center; 
@@ -30,19 +30,19 @@
             overflow: hidden; border: 1px solid #eee;
         }
 
-        /* ⭐ 선명도 조절: 0.9에서 0.7로 낮춰서 사진이 훨씬 잘 보이게 했습니다 */
+        /* ⭐ 선명도 조절: 0.6으로 낮춰서 사진이 매우 선명하게 보이게 했습니다 */
         .day-box::before {
             content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.7); 
+            background: rgba(255, 255, 255, 0.6); 
             z-index: 1;
         }
         .day-header, ul { position: relative; z-index: 2; }
 
-        /* 파일명 뒤에 .jpg.jpg가 붙은 형의 현재 상태를 그대로 반영했습니다 */
-        .day1 { background-image: url('day1_bg.jpg.jpg'); }
-        .day2 { background-image: url('day2_bg.jpg.jpg'); }
-        .day3 { background-image: url('day3_bg.jpg.jpg'); }
-        .day4 { background-image: url('day4_bg.jpg.jpg'); }
+        /* ⭐ 날짜별 배경 경로 강제 수정 (형의 현재 파일명 기준) */
+        .day1 { background-image: url('day1_bg.jpg.'); }
+        .day2 { background-image: url('day2_bg.jpg.'); }
+        .day3 { background-image: url('day3_bg.jpg.'); }
+        .day4 { background-image: url('day4_bg.jpg.'); }
 
         .day-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
         .day-num { background: var(--primary); color: white; padding: 6px 18px; border-radius: 25px; font-weight: bold; font-size: 1.1em; }
@@ -80,7 +80,7 @@
         <h2>📅 상세 일정 안내</h2>
         <div class="day-box day1">
             <div class="day-header"><span class="day-num">Day 1</span><span class="flight-tag">🛫 KE 765</span></div>
-            <ul><li>07:30 인천공항 제2터미널 집결</li><li>노보리베츠 지옥계곡 관광</li></ul>
+            <ul><li>07:30 인천공항 제2터미널 미팅 </li><li>노보리베츠 지옥계곡 관광</li></ul>
         </div>
         <div class="day-box day2">
             <div class="day-header"><span class="day-num">Day 2</span></div>
