@@ -7,83 +7,71 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --primary: #004a99; /* 제이어스 블루 */
-            --accent: #e11d48;  /* 대한항공 레드 */
-            --spring-pink: #ffb7c5;
+            --pink: #ffb7c5;    /* 벚꽃 핑크 */
+            --accent: #e11d48;  /* 강조 레드 */
             --bg-light: #f8fafc;
         }
 
-        /* 부드러운 스크롤 효과 */
         html { scroll-behavior: smooth; }
-
-        /* 노토 산스 폰트 전체 적용 */
         body { 
             font-family: 'Noto Sans KR', sans-serif; 
-            line-height: 1.8; 
-            color: #333; 
-            margin: 0; 
-            background-color: var(--bg-light); 
+            margin: 0; background: var(--bg-light); line-height: 1.8; color: #333; 
         }
 
-        /* 네비게이션 메뉴 */
+        /* 상단 메뉴바 */
         nav {
-            position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 1000;
-            display: flex; justify-content: center; padding: 18px 0;
+            position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000;
+            display: flex; justify-content: center; padding: 15px 0;
         }
         nav a {
-            text-decoration: none; color: var(--primary); font-weight: 500;
-            margin: 0 25px; font-size: 1.05em; transition: 0.3s;
+            text-decoration: none; color: var(--primary); font-weight: bold;
+            margin: 0 20px; transition: 0.3s; font-size: 1.05em;
         }
-        nav a:hover { color: var(--spring-pink); }
+        nav a:hover { color: var(--pink); }
 
-        /* 헤더 배경 (1st photo.jpg) */
+        /* 헤더 배경 (형의 사진 파일명 반영) */
         header { 
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), 
-                        url('1st photo.jpg'); /* 1st photo.jpg */
+                        url('1st photo.jpg'); /* 깃허브에 올린 파일명과 똑같아야 함 */
             background-size: cover; background-position: center;
             color: white; padding: 180px 20px 140px; text-align: center; 
         }
-        header h1 { margin: 0; font-size: 3.5em; font-weight: 700; letter-spacing: -1px; }
-        header p { font-size: 1.4em; margin-top: 15px; font-weight: 300; opacity: 0.9; }
+        header h1 { margin: 0; font-size: 3.2em; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); font-weight: 700; }
+        header p { font-size: 1.3em; margin-top: 15px; opacity: 0.9; }
 
-        /* 컨테이너 및 섹션 */
+        /* 컨텐츠 영역 */
         .container { max-width: 900px; margin: -60px auto 80px; padding: 0 20px; }
-        .section { 
-            background: white; padding: 45px; border-radius: 20px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08); margin-bottom: 50px; 
-        }
-        h2 { border-bottom: 3px solid var(--spring-pink); padding-bottom: 15px; color: var(--primary); font-weight: 700; margin-bottom: 30px; }
+        .section { background: white; padding: 45px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 50px; }
+        h2 { border-bottom: 4px solid var(--pink); padding-bottom: 12px; color: var(--primary); font-size: 2em; margin-bottom: 35px; }
 
-        /* 테이블 스타일 */
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { border: 1px solid #f1f1f1; padding: 16px; text-align: left; }
-        th { background-color: #f8fafc; color: var(--primary); width: 25%; font-weight: 700; }
-        
-        /* 일정 리스트 스타일 */
-        .day-box { border-bottom: 1px solid #f1f1f1; padding: 35px 0; }
+        /* 일정 카드 스타일 */
+        .day-box { border-bottom: 1px solid #eee; padding: 35px 0; }
         .day-box:last-child { border-bottom: none; }
         .day-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
-        .day-num { background: var(--primary); color: white; padding: 6px 20px; border-radius: 30px; font-weight: 700; font-size: 1.1em; }
-        .flight-tag { color: var(--accent); font-weight: 700; border: 2px solid var(--accent); padding: 3px 12px; border-radius: 6px; background: white; font-size: 0.9em; }
+        .day-num { background: var(--pink); color: var(--primary); padding: 6px 18px; border-radius: 25px; font-weight: bold; font-size: 1.1em; }
+        .flight-tag { color: var(--accent); font-weight: bold; border: 2px solid var(--accent); padding: 4px 12px; border-radius: 6px; font-size: 0.95em; background: white; }
         
-        ul { list-style: none; padding: 0; margin: 0; }
+        ul { list-style: none; padding: 0; margin-top: 15px; }
         ul li { position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1.1em; }
         ul li::before { content: '🌸'; position: absolute; left: 0; font-size: 0.9em; top: 2px; }
+        
+        .highlight { color: #d35400; font-weight: bold; background: #fff8e1; padding: 2px 5px; border-radius: 4px; }
+        .meeting-info { color: var(--primary); font-weight: bold; text-decoration: underline; font-size: 1.1em; }
 
-        /* 안내 상단 박스 */
-        .info-box { background: #f0f7ff; padding: 30px; border-radius: 15px; border-left: 6px solid var(--primary); }
-        .footer { background: #334155; color: #cbd5e1; padding: 50px; text-align: center; border-radius: 20px; font-size: 1em; }
+        .info-box { background: #f0f7ff; padding: 30px; border-radius: 15px; border-left: 6px solid var(--primary); margin-top: 20px; }
+        .footer { text-align: center; padding: 50px; color: #888; font-size: 0.95em; }
 
         /* 모바일 대응 */
         @media (max-width: 768px) {
-            header h1 { font-size: 2.3em; }
-            .day-header { flex-direction: column; align-items: flex-start; }
+            header h1 { font-size: 2.2em; }
             nav a { margin: 0 10px; font-size: 0.9em; }
+            .day-header { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
@@ -97,34 +85,31 @@
 
 <header>
     <h1>2026 RECRUITING CAMPAIGN</h1>
-    <p>5월의 삿포로, 설레는 여정의 시작</p>
-    <p><strong>2026. 05. 13(수) ~ 05. 16(토)</strong></p>
+    <p>5월의 삿포로, 벚꽃과 함께하는 특별한 여정</p>
+    <p><strong>2026. 05. 13(수) ~ 05. 16(토) [3박 4일]</strong></p>
 </header>
 
 <div class="container">
     <div class="section" id="overview">
         <h2>✈️ 행사 개요</h2>
-        <table>
-            <tr><th>여행지</th><td>일본 삿포로, 노보리베츠, 오타루</td></tr>
-            <tr><th>이용항공</th><td>대한항공 (KE 765 / KE 766)</td></tr>
-            <tr><th>미팅정보</th><td><strong>05/13(수) 07:30 인천공항 제2터미널</strong></td></tr>
-            <tr><th>주요숙소</th><td>노보리베츠 마호로바, 삿포로 머큐어 호텔</td></tr>
-        </table>
+        <p><strong>• 미팅 정보:</strong> <span class="meeting-info">05/13(수) 07:30 인천공항 제2터미널</span></p>
+        <p><strong>• 이용 항공:</strong> 대한항공 (인천-신치토세 직항)</p>
+        <p><strong>• 주요 숙소:</strong> <span class="highlight">노보리베츠 마호로바</span> (1박), <span class="highlight">삿포로 머큐어 호텔</span> (2박)</p>
     </div>
 
     <div class="section" id="schedule">
         <h2>📅 상세 일정 안내</h2>
-
+        
         <div class="day-box">
             <div class="day-header">
                 <span class="day-num">Day 1 (05/13, 수)</span>
-                <span class="flight-tag">🛫 KE 765 (10:35 - 13:25)</span>
+                <span class="flight-tag">🛫 KE 765 (10:35 인천 출발 - 13:25 삿포로 도착)</span>
             </div>
             <ul>
                 <li><strong>07:30 인천공항 제2터미널 집결</strong> 및 인원 점검</li>
-                <li>대한항공 KE 765편 탑승 및 신치토세 공항 도착</li>
+                <li>대한항공 탑승 및 신치토세 공항 도착</li>
                 <li>노보리베츠 이동 후 <strong>지옥계곡</strong> 관광</li>
-                <li><strong>호텔 마호로바</strong> 체크인 및 온천욕, 가이세키 석식</li>
+                <li>호텔 마호로바 체크인 및 <strong>가이세키 만찬</strong></li>
             </ul>
         </div>
 
@@ -133,10 +118,11 @@
                 <span class="day-num">Day 2 (05/14, 목)</span>
             </div>
             <ul>
-                <li>조식 후 호텔 체크아웃 및 <strong>시대촌</strong> 관광</li>
+                <li>조식 후 호텔 체크아웃</li>
+                <li><strong>노보리베츠 다테 지다이무라(시대촌)</strong> 문화 체험</li>
                 <li><strong>시로이코이비토 박물관</strong> 견학 후 삿포로 이동</li>
-                <li><strong>머큐어 호텔 삿포로</strong> 체크인</li>
-                <li>석식: <strong>자유식 (스스키노 미식 탐방)</strong></li>
+                <li>호텔 체크인 및 삿포로 도심 산책</li>
+                <li>석식: <span class="highlight">자유식 (스스키노 미식 탐방)</span></li>
             </ul>
         </div>
 
@@ -145,21 +131,22 @@
                 <span class="day-num">Day 3 (05/15, 금)</span>
             </div>
             <ul>
+                <li>호텔 조식 후 오타루 이동</li>
                 <li><strong>오타루 운하 및 오르골당</strong> 관광 및 자유시간</li>
-                <li><strong>삿포로 맥주 박물관</strong> 견학 (시음 불포함)</li>
-                <li>오오도리 공원 차창 관광</li>
-                <li>석식: <strong>난다(NANDA) 해산물 뷔페</strong></li>
+                <li>삿포로 귀환 후 <strong>맥주 박물관</strong> 견학 (시음 불포함)</li>
+                <li>석식: <span class="highlight">난다(NANDA) 해산물 뷔페</span></li>
             </ul>
         </div>
 
         <div class="day-box">
             <div class="day-header">
                 <span class="day-num">Day 4 (05/16, 토)</span>
-                <span class="flight-tag">🛬 KE 766 (14:50 - 17:55)</span>
+                <span class="flight-tag">🛬 KE 766 (14:50 삿포로 출발 - 17:55 인천 도착)</span>
             </div>
             <ul>
-                <li>11:00 호텔 체크아웃 및 공항 이동</li>
-                <li>대한항공 KE 766편 탑승 및 귀국</li>
+                <li>호텔 조식 후 여유로운 짐 정리</li>
+                <li><strong>11:00 호텔 체크아웃</strong> 및 공항 이동</li>
+                <li>공항 면세점 자유 쇼핑 및 귀국</li>
             </ul>
         </div>
     </div>
@@ -167,14 +154,14 @@
     <div class="section" id="notice">
         <h2>💡 안내 사항</h2>
         <div class="info-box">
-            <p>• <strong>날씨:</strong> 5월 삿포로는 선선하니 가벼운 외투를 챙기세요.</p>
-            <p>• <strong>전압:</strong> 일본용 110V 어댑터(돼지코)가 필요합니다.</p>
-            <p>• <strong>기타:</strong> 2일차 석식 자유식을 위한 개인 경비를 준비해 주세요.</p>
+            <p>• <strong>날씨:</strong> 5월 삿포로는 선선하니 가벼운 외투를 꼭 챙기세요.</p>
+            <p>• <strong>전압:</strong> 일본 전용 110V 어댑터(돼지코)가 필요합니다.</p>
+            <p>• <strong>미팅:</strong> 07:30까지 인천공항 제2터미널 미팅 장소로 와주세요.</p>
         </div>
     </div>
 
     <div class="footer">
-        <p>© 2026 J-US Recruiting Campaign. All rights reserved.</p>
+        © 2026 J-US Recruiting Campaign. All rights reserved.
     </div>
 </div>
 
