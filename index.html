@@ -13,7 +13,6 @@
         nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; display: flex; justify-content: center; padding: 15px 0; }
         nav a { text-decoration: none; color: var(--primary); font-weight: bold; margin: 0 20px; }
         
-        /* 메인 헤더: 1st photo.jpg. 에 정확히 맞춤 */
         header { 
             background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url('1st photo.jpg.jpg');
             background-size: cover; background-position: center; color: white; padding: 180px 20px 140px; text-align: center; 
@@ -24,35 +23,36 @@
         .section { background: white; padding: 45px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 50px; }
         h2 { border-bottom: 4px solid var(--primary); padding-bottom: 12px; color: var(--primary); font-size: 2em; margin-bottom: 35px; }
 
+        /* 날짜별 배경 설정 */
         .day-box { 
             position: relative; background-size: cover; background-position: center; 
             border-radius: 20px; margin-bottom: 30px; padding: 40px !important; 
             overflow: hidden; border: 1px solid #eee;
         }
 
-        /* ⭐ 선명도 조절: 0.6으로 낮춰서 사진이 매우 선명하게 보이게 했습니다 */
+        /* 선명도 조절 (0.6으로 아주 선명하게 설정) */
         .day-box::before {
             content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.6); 
-            z-index: 1;
+            background: rgba(255, 255, 255, 0.6); z-index: 1;
         }
         .day-header, ul { position: relative; z-index: 2; }
 
-        /* ⭐ 날짜별 배경 경로 강제 수정 (형의 현재 파일명 기준) */
-        .day1 { background-image: url('day1_bg.jpg.'); }
-        .day2 { background-image: url('day2_bg.jpg.'); }
-        .day3 { background-image: url('day3_bg.jpg.'); }
-        .day4 { background-image: url('day4_bg.jpg.'); }
+        /* 사진 경로 연결 */
+        .day1 { background-image: url('day1_bg.jpg.jpg'); }
+        .day2 { background-image: url('day2_bg.jpg.jpg'); }
+        .day3 { background-image: url('day3_bg.jpg.jpg'); }
+        .day4 { background-image: url('day4_bg.jpg.jpg'); }
 
-        .day-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .day-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
         .day-num { background: var(--primary); color: white; padding: 6px 18px; border-radius: 25px; font-weight: bold; font-size: 1.1em; }
-        .flight-tag { color: var(--accent); font-weight: bold; border: 2px solid var(--accent); padding: 4px 12px; border-radius: 6px; background: white; }
+        .flight-tag { color: var(--accent); font-weight: bold; border: 2px solid var(--accent); padding: 4px 12px; border-radius: 6px; background: white; font-size: 0.9em; }
         
-        ul { list-style: none; padding: 0; }
+        ul { list-style: none; padding: 0; margin-top: 15px; }
         ul li { position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1.1em; font-weight: 500; }
         ul li::before { content: '🌸'; position: absolute; left: 0; }
         
         .footer { text-align: center; padding: 50px; color: #888; }
+        @media (max-width: 768px) { header h1 { font-size: 2.2em; } .day-header { flex-direction: column; align-items: flex-start; } }
     </style>
 </head>
 <body>
@@ -72,35 +72,71 @@
 <div class="container">
     <div class="section" id="overview">
         <h2>✈️ 행사 개요</h2>
-        <p><strong>• 미팅:</strong> 05/13(수) 07:30 인천공항 제2터미널</p>
-        <p><strong>• 숙소:</strong> 노보리베츠 마호로바(1박), 삿포로 머큐어 호텔(2박)</p>
+        <p><strong>• 미팅 정보:</strong> <span style="color:var(--primary); font-weight:bold;">05/13(수) 07:30 인천공항 제2터미널</span></p>
+        <p><strong>• 이용 항공:</strong> 대한항공 (인천-신치토세 직항)</p>
+        <p><strong>• 주요 숙소:</strong> 노보리베츠 마호로바(1박), 삿포로 머큐어 호텔(2박)</p>
     </div>
 
     <div class="section" id="schedule">
         <h2>📅 상세 일정 안내</h2>
+        
         <div class="day-box day1">
-            <div class="day-header"><span class="day-num">Day 1</span><span class="flight-tag">🛫 KE 765</span></div>
-            <ul><li>07:30 인천공항 제2터미널 미팅 </li><li>노보리베츠 지옥계곡 관광</li></ul>
+            <div class="day-header">
+                <span class="day-num">Day 1 (05/13)</span>
+                <span class="flight-tag">🛫 KE 765 (10:35 인천 발 - 13:25 삿포로 착)</span>
+            </div>
+            <ul>
+                <li><strong>07:30 인천공항 제2터미널 집결</strong> 및 인원 점검</li>
+                <li>대한항공 탑승 및 신치토세 공항 도착</li>
+                <li>노보리베츠 이동 후 <strong>지옥계곡</strong> 관광</li>
+                <li>호텔 마호로바 체크인 및 <strong> 온천욕, 가이세키 만찬</strong></li>
+            </ul>
         </div>
+
         <div class="day-box day2">
-            <div class="day-header"><span class="day-num">Day 2</span></div>
-            <ul><li>다테 지다이무라(시대촌) 체험</li><li>시로이코이비토 박물관 견학</li></ul>
+            <div class="day-header"><span class="day-num">Day 2 (05/14)</span></div>
+            <ul>
+                <li>조식 후 호텔 체크아웃</li>
+                <li><strong>노보리베츠 다테 지다이무라(시대촌)</strong> 문화 체험</li>
+                <li><strong>시로이코이비토 박물관</strong> 견학 후 삿포로 이동</li>
+                <li>석식: <strong>자유식 (스스키노 미식 탐방)</strong></li>
+            </ul>
         </div>
+
         <div class="day-box day3">
-            <div class="day-header"><span class="day-num">Day 3</span></div>
-            <ul><li>오타루 운하 및 오르골당 관광</li><li>석식: 난다(NANDA) 해산물 뷔페</li></ul>
+            <div class="day-header"><span class="day-num">Day 3 (05/15)</span></div>
+            <ul>
+                <li>호텔 조식 후 오타루 이동</li>
+                <li><strong>오타루 운하 및 오르골당</strong> 관광 및 자유시간</li>
+                <li>삿포로 귀환 후 <strong>맥주 박물관</strong> 견학</li>
+                <li>오오도리 공원</strong>차창 견학</li>
+                <li>석식: <strong>난다(NANDA) 해산물 뷔페</strong></li>
+            </ul>
         </div>
+
         <div class="day-box day4">
-            <div class="day-header"><span class="day-num">Day 4</span><span class="flight-tag">🛬 KE 766</span></div>
-            <ul><li>11:00 호텔 체크아웃 및 귀국</li></ul>
+            <div class="day-header">
+                <span class="day-num">Day 4 (05/16)</span>
+                <span class="flight-tag">🛬 KE 766 (14:50 삿포로 발 - 17:55 인천 착)</span>
+            </div>
+            <ul>
+                <li>호텔 조식 후 11:00 체크아웃 및 공항 이동</li>
+                <li>면세점 자유 쇼핑 및 귀국</li>
+            </ul>
         </div>
     </div>
 
     <div class="section" id="notice">
         <h2>💡 안내 사항</h2>
-        <p>• 5월 삿포로는 선선하니 가벼운 외투를 꼭 챙기세요.</p>
+        <div style="background:#f0f7ff; padding:25px; border-radius:15px; border-left:6px solid var(--primary);">
+            <p>• 5월 삿포로는 선선하니 가벼운 외투를 꼭 챙기세요.</p>
+            <p>• 일본 전용 110V 어댑터(돼지코)가 필요합니다.</p>
+        </div>
     </div>
-    <div class="footer">© 2026 J-US Recruiting Campaign.</div>
+
+    <div class="footer">
+        © 2026 J-US Recruiting Campaign. All rights reserved.
+    </div>
 </div>
 
 </body>
