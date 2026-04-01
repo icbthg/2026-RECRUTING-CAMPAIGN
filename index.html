@@ -9,87 +9,62 @@
         :root { --primary: #004a99; --gold: #d4af37; --bg: #f4f7f9; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
-        /* 잘림 방지의 핵심: 고정 높이를 해제하고 자유로운 스크롤 허용 */
+        /* 모바일 잘림 방지: 모든 높이 고정 해제 */
         body, html { 
-            margin: 0; padding: 0; 
-            min-height: 100vh; /* 최소 높이만 설정 */
+            margin: 0; padding: 0; min-height: 100vh;
             font-family: 'Noto Sans KR', sans-serif;
-            background: #f4f7f9; 
-            overflow-y: auto; /* 세로 스크롤 자유롭게 */
+            background: #f4f7f9; overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
         }
 
-        .main-wrapper {
-            display: flex; flex-direction: column;
-            width: 100%;
-        }
+        .main-wrapper { width: 100%; display: block; }
 
-        /* 上단 헤더: 기존보다 2배 더 확대 (화면의 약 70% 점유) */
+        /* 상단 헤더: 화면의 70% 수준으로 크게 유지 */
         .top-header { 
-            height: 70vh; /* 35vh에서 70vh로 2배 확대 */
-            min-height: 450px; 
-            display: flex; flex-direction: column;
+            height: 70vh; min-height: 450px; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center; color: white;
-            /* ⬇️ 파일명을 'jpg.jpg'에서 'jpg'로 수정했습니다. */
             background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('1st photo.jpg');
             background-size: cover; background-position: center;
-            border-radius: 0 0 40px 40px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-radius: 0 0 40px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             padding: 20px;
         }
         .top-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.5rem, 10vw, 4rem); margin: 15px 0; text-shadow: 3px 3px 15px rgba(0,0,0,0.7); font-weight: 900; }
-        .top-header p { font-size: 1.1rem; margin: 0; letter-spacing: 5px; font-weight: 300; text-transform: uppercase; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+        .top-header p { font-size: 1.1rem; margin: 0; letter-spacing: 5px; font-weight: 300; text-transform: uppercase; }
 
-        /* 본문 컨테이너 */
-        .container-body { 
-            margin-top: -60px; /* 헤더와 더 깊게 겹쳐서 입체감 부여 */
-            padding: 0 15px 50px; 
-            z-index: 10;
-        }
+        /* 본문 컨테이너: 하단 여백 대폭 추가하여 잘림 방지 */
+        .container-body { margin-top: -60px; padding: 0 15px 100px; position: relative; z-index: 10; }
 
-        /* 본문 카드: 높이 제한 없음 */
+        /* 본문 카드: 높이 자동 조절 */
         .content-card {
             background: #ffffff; border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
-            padding: 35px 20px;
-            width: 100%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15); padding: 35px 20px;
+            width: 100%; height: auto;
         }
 
         /* 탭 메뉴 스타일 */
-        .tab-nav-large { 
-            display: flex; gap: 8px; margin: 25px 0; 
-            overflow-x: auto; padding: 5px 2px 15px; 
-            scrollbar-width: none; 
-        }
+        .tab-nav-large { display: flex; gap: 8px; margin: 25px 0; overflow-x: auto; padding: 5px 2px 15px; scrollbar-width: none; }
         .tab-nav-large::-webkit-scrollbar { display: none; }
-        
         .tab-link-lg {
-            flex: 1; min-width: 80px; padding: 18px 5px; border-radius: 15px;
+            flex: 1; min-width: 85px; padding: 18px 5px; border-radius: 15px;
             border: 2px solid #eee; background: #f9f9f9; color: #666;
-            font-weight: bold; font-size: 1rem; cursor: pointer; transition: all 0.3s;
+            font-weight: bold; font-size: 1rem; cursor: pointer; transition: all 0.3s; white-space: nowrap;
         }
         .tab-link-lg.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,74,153,0.3); }
 
-        /* 패널 및 정보 스타일 */
+        /* 패널 스타일 */
         .tab-panel { display: none; animation: fadeIn 0.4s ease; }
         .tab-panel.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         h2 { color: var(--primary); font-size: 1.6rem; margin: 0 0 20px 0; border-bottom: 3px solid var(--gold); padding-bottom: 12px; }
         .day-info { background: #f0f4f8; border-radius: 15px; padding: 25px; margin-bottom: 25px; border-left: 6px solid var(--primary); }
-        .day-info p { margin: 10px 0; line-height: 1.6; font-size: 1.1rem; color: #222; }
+        .day-info p { margin: 10px 0; line-height: 1.6; font-size: 1.1rem; color: #222; word-break: keep-all; }
         
         ul { list-style: none; padding: 0; margin: 0; }
         ul li { position: relative; padding-left: 30px; margin-bottom: 18px; font-size: 1.05rem; word-break: keep-all; line-height: 1.7; color: #444; }
         ul li::before { content: '🌸'; position: absolute; left: 0; font-size: 1rem; }
 
-        .yt-btn { 
-            display: block; background: #ff0000; color: white !important; 
-            text-align: center; padding: 18px; border-radius: 15px; 
-            text-decoration: none; font-weight: bold; margin-top: 30px; 
-            font-size: 1rem; box-shadow: 0 5px 20px rgba(255,0,0,0.3); 
-        }
-
+        .yt-btn { display: block; background: #ff0000; color: white !important; text-align: center; padding: 18px; border-radius: 15px; text-decoration: none; font-weight: bold; margin-top: 30px; font-size: 1rem; }
         .footer { text-align: center; padding: 40px 20px; color: #bbb; font-size: 0.85rem; }
     </style>
 </head>
@@ -105,7 +80,7 @@
     <div class="container-body">
         <div class="content-card">
             
-            <div id="info" class="tab-panel active">
+            <div class="overview-section">
                 <h2>여행 개요</h2>
                 <div class="day-info">
                     <p><strong>• 일시:</strong> 2026년 5월 13일(수) ~ 5월 16일(토)</p>
@@ -113,66 +88,70 @@
                     <p><strong>• 숙소:</strong> 노보리베츠 마호로바(1박) / 머큐어 삿포로(2박)</p>
                     <p><strong>• 미팅:</strong> 5월 13일(수) 07:30 인천공항 제2터미널</p>
                 </div>
-                <ul>
-                    <li>대한항공 전용 <strong>인천공항 제2터미널(T2)</strong> 3층 출국장 미팅입니다.</li>
-                    <li>여권 유효기간은 <strong>6개월 이상</strong> 필수이며, 비짓재팬웹 등록을 권장합니다.</li>
-                    <li>현지 5월 날씨는 3도~14도로 쌀쌀할 수 있으니 겹쳐 입는 복장을 준비하세요.</li>
-                </ul>
-                <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-btn">비짓재팬웹 등록 가이드 영상</a>
             </div>
 
             <div class="tab-nav-large">
-                <button class="tab-link-lg active" onclick="showTab(event, 'info')">개요</button>
+                <button class="tab-link-lg active" onclick="showTab(event, 'info')">여행 안내</button>
                 <button class="tab-link-lg" onclick="showTab(event, 'day1')">1일차</button>
                 <button class="tab-link-lg" onclick="showTab(event, 'day2')">2일차</button>
                 <button class="tab-link-lg" onclick="showTab(event, 'day3')">3일차</button>
                 <button class="tab-link-lg" onclick="showTab(event, 'day4')">4일차</button>
             </div>
 
+            <div id="info" class="tab-panel active">
+                <h2>여행 안내</h2>
+                <ul>
+                    <li>인천공항 제2터미널 3층 출국장 미팅입니다.</li>
+                    <li>여권 유효기간은 6개월 이상 필수입니다.</li>
+                    <li>비짓재팬웹 등록을 미리 완료해 주세요.</li>
+                    <li>5월 삿포로 날씨에 맞춰 겉옷을 준비하세요.</li>
+                    <li>110V 전용 돼지코 어댑터를 지참하세요.</li>
+                </ul>
+                <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-btn">입국 가이드 영상</a>
+            </div>
+
             <div id="day1" class="tab-panel">
-                <h2>DAY 01 | 05. 13 (수)</h2>
+                <h2>1일차 상세 일정</h2>
                 <div class="day-info">
-                    <p style="color:#e11d48; font-weight:bold;">🛫 KE 765 (10:35 인천 출발 / 13:25 삿포로 도착)</p>
+                    <p style="color:#e11d48; font-weight:bold;">출국편: KE 765 (10:35 - 13:25)</p>
                 </div>
                 <ul>
                     <li>인천공항 제2터미널 집결 및 수속</li>
-                    <li>대한항공 탑승 및 삿포로 신치토세 공항 도착</li>
-                    <li>노보리베츠 이동 후 <strong>지옥계곡</strong> 관광</li>
-                    <li>호텔 체크인 및 석식(가이세키) 후 온천욕</li>
+                    <li>대한항공 탑승 및 삿포로 도착</li>
+                    <li>노보리베츠 지옥계곡 관광</li>
+                    <li>호텔 체크인 및 석식(가이세키)</li>
                 </ul>
             </div>
 
             <div id="day2" class="tab-panel">
-                <h2>DAY 02 | 05. 14 (목)</h2>
+                <h2>2일차 상세 일정</h2>
                 <div class="day-info"><strong>노보리베츠 & 삿포로 시내 투어</strong></div>
                 <ul>
-                    <li>호텔 조식 후 체크아웃 및 이동</li>
-                    <li><strong>다테 지다이무라(시대촌)</strong> 에도 민속촌 관람</li>
-                    <li><strong>시로이코이비토 파크</strong> 과자 박물관 견학</li>
-                    <li>삿포로 이동 및 머큐어 호텔 삿포로 체크인</li>
+                    <li>다테 지다이무라 민속촌 관람</li>
+                    <li>시로이코이비토 파크 견학</li>
+                    <li>머큐어 호텔 삿포로 체크인</li>
                 </ul>
             </div>
 
             <div id="day3" class="tab-panel">
-                <h2>DAY 03 | 05. 15 (금)</h2>
+                <h2>3일차 상세 일정</h2>
                 <div class="day-info"><strong>오타루 감성 & 삿포로 박물관</strong></div>
                 <ul>
                     <li>오타루 운하 및 오르골당 산책</li>
-                    <li>삿포로 맥주 박물관 견학 및 시음</li>
-                    <li>석식: <strong>난다(NANDA) 해산물 뷔페</strong> 만찬</li>
-                    <li>스스키노 시내 자유 일정</li>
+                    <li>삿포로 맥주 박물관 시음</li>
+                    <li>난다 해산물 뷔페 만찬</li>
                 </ul>
             </div>
 
             <div id="day4" class="tab-panel">
-                <h2>DAY 04 | 05. 16 (토)</h2>
+                <h2>4일차 상세 일정</h2>
                 <div class="day-info">
-                    <p style="color:#e11d48; font-weight:bold;">🛬 KE 766 (14:50 삿포로 출발 / 17:55 인천 도착)</p>
+                    <p style="color:#e11d48; font-weight:bold;">귀국편: KE 766 (14:50 - 17:55)</p>
                 </div>
                 <ul>
-                    <li>호텔 조식 후 11:00 체크아웃</li>
-                    <li>신치토세 공항 이동 및 면세점 자유 쇼핑</li>
-                    <li>인천공항 제2터미널 도착 및 해산</li>
+                    <li>호텔 체크아웃 및 자유 시간</li>
+                    <li>공항 이동 및 면세점 쇼핑</li>
+                    <li>인천공항 제2터미널 도착</li>
                 </ul>
             </div>
 
