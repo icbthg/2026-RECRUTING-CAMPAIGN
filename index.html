@@ -42,7 +42,9 @@
         .fixed-info { background: #f8f9fa; border-radius: 15px; padding: 15px 10px; }
         .fixed-info p { margin: 10px 0; font-size: 0.88rem; color: #222; display: flex; flex-direction: column; }
         .fixed-info p strong { color: var(--primary); margin-bottom: 2px; }
-        .sub-text { font-size: 0.8rem; color: #666; margin-top: 2px; }
+        
+        /* 🆕 미팅 안내 문구 스타일: 윗글씨와 동일하게 변경 */
+        .meeting-note { font-size: 0.88rem; color: #222; margin-top: 2px; }
 
         /* 탭 카드 영역 */
         .tab-card {
@@ -50,10 +52,8 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.15); padding: 25px 15px;
         }
 
-        /* 🆕 탭 메뉴 이층 구조 개편 */
         .tab-nav-container { display: flex; flex-direction: column; gap: 8px; margin-bottom: 25px; }
         
-        /* 여행 안내 버튼 (가로로 길게) */
         .btn-info-wide {
             width: 100%; padding: 18px; border-radius: 15px;
             border: 2px solid #eee; background: #f9f9f9; color: #666;
@@ -61,7 +61,6 @@
         }
         .btn-info-wide.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,74,153,0.3); }
 
-        /* 일차별 버튼 (4분할) */
         .tab-days-row { display: flex; gap: 6px; }
         .tab-btn-day {
             flex: 1; padding: 15px 5px; border-radius: 12px;
@@ -70,7 +69,6 @@
         }
         .tab-btn-day.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* 패널 스타일 */
         .tab-panel { display: none; }
         .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
@@ -107,7 +105,7 @@
                 <p><span><strong>• 숙소:</strong> 마호로바(1박) / 머큐어 삿포로(2박)</span></p>
                 <p>
                     <span><strong>• 미팅:</strong> 05.13(수) 07:30 인천공항 T2</span>
-                    <span class="sub-text">(여행 안내 탭 내 약도 참고)</span>
+                    <span class="meeting-note">(여행 안내 탭 내 약도 참고)</span>
                 </p>
             </div>
         </div>
@@ -118,7 +116,7 @@
                 <div class="tab-days-row">
                     <button class="tab-btn-day" onclick="showTab(event, 'day1')">1일차</button>
                     <button class="tab-btn-day" onclick="showTab(event, 'day2')">2일차</button>
-                    <button class="tab-btn" style="display:none;"></button> <button class="tab-btn-day" onclick="showTab(event, 'day3')">3일차</button>
+                    <button class="tab-btn-day" onclick="showTab(event, 'day3')">3일차</button>
                     <button class="tab-btn-day" onclick="showTab(event, 'day4')">4일차</button>
                 </div>
             </div>
@@ -194,22 +192,18 @@
 <script>
     function showTab(evt, tabId) {
         var i, tabpanel, allBtns;
-        // 1. 모든 패널 숨기기
         tabpanel = document.getElementsByClassName("tab-panel");
         for (i = 0; i < tabpanel.length; i++) {
             tabpanel[i].style.display = "none";
             tabpanel[i].classList.remove("active");
         }
-        // 2. 모든 버튼(여행안내 버튼 포함) 활성화 해제
         allBtns = document.querySelectorAll('.btn-info-wide, .tab-btn-day');
         for (i = 0; i < allBtns.length; i++) {
             allBtns[i].classList.remove("active");
         }
-        // 3. 클릭한 패널 보이기
         var activePanel = document.getElementById(tabId);
         activePanel.style.display = "block";
         setTimeout(function(){ activePanel.classList.add("active"); }, 10);
-        // 4. 클릭한 버튼 강조
         evt.currentTarget.classList.add("active");
     }
 </script>
