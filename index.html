@@ -18,6 +18,7 @@
 
         .main-wrapper { width: 100%; display: block; }
 
+        /* 상단 헤더 */
         .top-header { 
             height: 50vh; min-height: 350px; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center; color: white;
@@ -29,8 +30,9 @@
         .top-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 8vw, 3.5rem); margin: 10px 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.7); font-weight: 900; }
         .welcome-msg { position: absolute; left: 20px; bottom: 70px; font-size: 1.1rem; font-weight: 700; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
 
-        .container-body { margin-top: -50px; padding: 0 15px 100px; position: relative; z-index: 10; }
+        .container-body { margin-top: -50px; padding: 0 15px 120px; position: relative; z-index: 10; }
 
+        /* 고정 개요 카드 */
         .fixed-card {
             background: #ffffff; border-radius: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 25px 15px;
@@ -38,27 +40,37 @@
         }
         h2 { color: var(--primary); font-size: 1.3rem; margin: 0 0 15px 0; border-left: 5px solid var(--gold); padding-left: 12px; }
         .fixed-info { background: #f8f9fa; border-radius: 15px; padding: 15px 10px; }
-        .fixed-info p { 
-            margin: 10px 0; font-size: 0.88rem; color: #222; 
-            display: flex; flex-direction: column; /* 세로 정렬로 변경 */
-        }
+        .fixed-info p { margin: 10px 0; font-size: 0.88rem; color: #222; display: flex; flex-direction: column; }
         .fixed-info p strong { color: var(--primary); margin-bottom: 2px; }
         .sub-text { font-size: 0.8rem; color: #666; margin-top: 2px; }
 
+        /* 탭 카드 영역 */
         .tab-card {
             background: #ffffff; border-radius: 30px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.15); padding: 25px 15px;
         }
 
-        .tab-nav { display: flex; gap: 6px; margin-bottom: 25px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
-        .tab-nav::-webkit-scrollbar { display: none; }
-        .tab-btn {
-            flex: 1; min-width: 85px; padding: 15px 5px; border-radius: 12px;
+        /* 🆕 탭 메뉴 이층 구조 개편 */
+        .tab-nav-container { display: flex; flex-direction: column; gap: 8px; margin-bottom: 25px; }
+        
+        /* 여행 안내 버튼 (가로로 길게) */
+        .btn-info-wide {
+            width: 100%; padding: 18px; border-radius: 15px;
             border: 2px solid #eee; background: #f9f9f9; color: #666;
-            font-weight: bold; font-size: 0.85rem; cursor: pointer;
+            font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s;
         }
-        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .btn-info-wide.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,74,153,0.3); }
 
+        /* 일차별 버튼 (4분할) */
+        .tab-days-row { display: flex; gap: 6px; }
+        .tab-btn-day {
+            flex: 1; padding: 15px 5px; border-radius: 12px;
+            border: 2px solid #eee; background: #f9f9f9; color: #666;
+            font-weight: bold; font-size: 0.9rem; cursor: pointer;
+        }
+        .tab-btn-day.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        /* 패널 스타일 */
         .tab-panel { display: none; }
         .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
@@ -70,7 +82,7 @@
 
         .map-img {
             width: 100%; border-radius: 15px; margin: 15px 0;
-            border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: block;
         }
 
         .yt-btn { display: block; background: #ff0000; color: white !important; text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; margin-top: 25px; font-size: 0.9rem; }
@@ -101,12 +113,14 @@
         </div>
 
         <div class="tab-card">
-            <div class="tab-nav">
-                <button class="tab-btn active" onclick="showTab(event, 'info')">여행 안내</button>
-                <button class="tab-btn" onclick="showTab(event, 'day1')">1일차</button>
-                <button class="tab-btn" onclick="showTab(event, 'day2')">2일차</button>
-                <button class="tab-btn" onclick="showTab(event, 'day3')">3일차</button>
-                <button class="tab-btn" onclick="showTab(event, 'day4')">4일차</button>
+            <div class="tab-nav-container">
+                <button id="infoBtn" class="btn-info-wide active" onclick="showTab(event, 'info')">여행 안내 (상세 정보 및 약도)</button>
+                <div class="tab-days-row">
+                    <button class="tab-btn-day" onclick="showTab(event, 'day1')">1일차</button>
+                    <button class="tab-btn-day" onclick="showTab(event, 'day2')">2일차</button>
+                    <button class="tab-btn" style="display:none;"></button> <button class="tab-btn-day" onclick="showTab(event, 'day3')">3일차</button>
+                    <button class="tab-btn-day" onclick="showTab(event, 'day4')">4일차</button>
+                </div>
             </div>
 
             <div id="info" class="tab-panel active">
@@ -114,8 +128,7 @@
                 <ul>
                     <li>인천공항 제2터미널(T2) 3층 출국장 N카운터 미팅</li>
                 </ul>
-                <img src="Map.jpg" alt="미팅 장소 약도" class="map-img">
-                
+                <img src="map.jpg" alt="미팅 장소 약도" class="map-img">
                 <ul>
                     <li>여권 유효기간 6개월 이상 필수 확인</li>
                     <li>비짓재팬웹(VJW) 출발 전 등록 필수</li>
@@ -145,8 +158,7 @@
                     <li>현지식 중식</li>
                     <li>시대촌 출발 / 삿포로 향발</li>
                     <li>시로이고히비토 테마파크 관람</li>
-                    <li>삿포로 머큐어 호텔로 이동</li>
-                    <li>호텔 Check-in</li>
+                    <li>삿포로 머큐어 호텔로 이동 / Check-in</li>
                     <li style="color: #004a99; font-weight: bold;">삿포로에서 자유시간</li>
                 </ul>
             </div>
@@ -155,9 +167,10 @@
                 <h3>3일차 상세 일정</h3>
                 <ul>
                     <li>10:00 호텔 출발</li>
-                    <li>오타루 운하 및 오르골당 관광</li>
-                    <li>현지식 중식</li>
-                    <li>삿포로 맥주 박물관 견학</li>
+                    <li>영화 'Love Story'의 도시 오타루 관광</li>
+                    <li>운치있는 운하와 오타루 대표 오르골당 관광</li>
+                    <li>현지식 중식 후 삿포로 이동</li>
+                    <li>삿포로 맥주 박물관 견학 (시음료 불포함)</li>
                     <li>오오도리 공원 차창 관광</li>
                     <li>석식: 난다(NANDA) 해산물 뷔페 만찬</li>
                 </ul>
@@ -166,8 +179,7 @@
             <div id="day4" class="tab-panel">
                 <h3>4일차 상세 일정</h3>
                 <ul>
-                    <li>호텔 조식</li>
-                    <li>11:00 호텔 Check-out</li>
+                    <li>호텔 조식 후 11:00 호텔 Check-out</li>
                     <li>공항으로 이동</li>
                     <li>14:50 대한항공 KE 766편 삿포로 출발</li>
                     <li>17:55 인천 공항 도착 및 해산</li>
@@ -181,18 +193,23 @@
 
 <script>
     function showTab(evt, tabId) {
-        var i, tabpanel, tabbtns;
+        var i, tabpanel, allBtns;
+        // 1. 모든 패널 숨기기
         tabpanel = document.getElementsByClassName("tab-panel");
         for (i = 0; i < tabpanel.length; i++) {
             tabpanel[i].style.display = "none";
             tabpanel[i].classList.remove("active");
         }
-        tabbtns = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tabbtns.length; i++) {
-            tabbtns[i].classList.remove("active");
+        // 2. 모든 버튼(여행안내 버튼 포함) 활성화 해제
+        allBtns = document.querySelectorAll('.btn-info-wide, .tab-btn-day');
+        for (i = 0; i < allBtns.length; i++) {
+            allBtns[i].classList.remove("active");
         }
-        document.getElementById(tabId).style.display = "block";
-        setTimeout(function(){ document.getElementById(tabId).classList.add("active"); }, 10);
+        // 3. 클릭한 패널 보이기
+        var activePanel = document.getElementById(tabId);
+        activePanel.style.display = "block";
+        setTimeout(function(){ activePanel.classList.add("active"); }, 10);
+        // 4. 클릭한 버튼 강조
         evt.currentTarget.classList.add("active");
     }
 </script>
