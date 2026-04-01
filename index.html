@@ -9,7 +9,6 @@
         :root { --primary: #004a99; --gold: #d4af37; --bg: #f4f7f9; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
-        /* 모바일 잘림 방지 및 자연스러운 스크롤 */
         body, html { 
             margin: 0; padding: 0; min-height: 100vh;
             font-family: 'Noto Sans KR', sans-serif;
@@ -19,7 +18,7 @@
 
         .main-wrapper { width: 100%; display: block; }
 
-        /* 상단 헤더: 웅장한 배경 (70vh) */
+        /* 상단 헤더: 배경 70% & 환영 문구 */
         .top-header { 
             height: 70vh; min-height: 450px; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center; color: white;
@@ -27,45 +26,73 @@
             background-size: cover; background-position: center;
             border-radius: 0 0 40px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             padding: 20px;
+            position: relative;
         }
         .top-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.2rem, 10vw, 4rem); margin: 15px 0; text-shadow: 3px 3px 15px rgba(0,0,0,0.7); font-weight: 900; }
         .top-header p { font-size: 1.1rem; margin: 0; letter-spacing: 5px; font-weight: 300; text-transform: uppercase; }
 
-        /* 본문 컨테이너 */
+        /* 환영 문구 */
+        .welcome-msg {
+            position: absolute; left: 20px; bottom: 80px;
+            font-size: 1.2rem; font-weight: 700; color: #ffffff;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8); z-index: 5;
+        }
+
         .container-body { margin-top: -60px; padding: 0 15px 100px; position: relative; z-index: 10; }
 
-        /* 본문 카드 */
-        .content-card {
+        /* 1. 여행 개요 카드 (한 줄 보기 최적화) */
+        .fixed-card {
             background: #ffffff; border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15); padding: 35px 20px;
-            width: 100%; height: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 25px 15px;
+            width: 100%; margin-bottom: 20px;
+        }
+        h2 { color: var(--primary); font-size: 1.4rem; margin: 0 0 15px 0; border-left: 5px solid var(--gold); padding-left: 12px; }
+        
+        .info-box { background: #f0f4f8; border-radius: 15px; padding: 18px 12px; }
+        .info-box p { 
+            margin: 12px 0; 
+            line-height: 1.2; 
+            font-size: 0.95rem; /* 기본 폰트 살짝 축소 */
+            color: #222; 
+            white-space: nowrap; /* 🆕 강제 한 줄 유지 */
+            display: flex;
+            align-items: center;
+        }
+        .info-box p strong { min-width: 55px; margin-right: 5px; } /* 항목 이름 너비 고정 */
+
+        /* 2. 탭 전용 카드 */
+        .tab-card {
+            background: #ffffff; border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15); padding: 25px 15px;
+            width: 100%;
         }
 
-        /* 탭 메뉴 스타일: 사이즈 확대 */
-        .tab-nav-large { display: flex; gap: 8px; margin: 25px 0; overflow-x: auto; padding: 5px 2px 15px; scrollbar-width: none; }
-        .tab-nav-large::-webkit-scrollbar { display: none; }
-        .tab-link-lg {
-            flex: 1; min-width: 90px; padding: 18px 5px; border-radius: 15px;
+        /* 탭 버튼 스타일 */
+        .tab-nav { display: flex; gap: 6px; margin-bottom: 25px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
+        .tab-nav::-webkit-scrollbar { display: none; }
+        .tab-btn {
+            flex: 1; min-width: 80px; padding: 15px 5px; border-radius: 12px;
             border: 2px solid #eee; background: #f9f9f9; color: #666;
-            font-weight: bold; font-size: 1rem; cursor: pointer; transition: all 0.3s; white-space: nowrap;
+            font-weight: bold; font-size: 0.9rem; cursor: pointer; white-space: nowrap;
         }
-        .tab-link-lg.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,74,153,0.3); }
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* 패널 스타일 */
         .tab-panel { display: none; animation: fadeIn 0.4s ease; }
         .tab-panel.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        h2 { color: var(--primary); font-size: 1.6rem; margin: 0 0 20px 0; border-bottom: 3px solid var(--gold); padding-bottom: 12px; }
-        .day-info { background: #f0f4f8; border-radius: 15px; padding: 25px; margin-bottom: 25px; border-left: 6px solid var(--primary); }
-        .day-info p { margin: 10px 0; line-height: 1.6; font-size: 1.1rem; color: #222; word-break: keep-all; }
-        
         ul { list-style: none; padding: 0; margin: 0; }
-        ul li { position: relative; padding-left: 30px; margin-bottom: 18px; font-size: 1.05rem; word-break: keep-all; line-height: 1.7; color: #444; }
-        ul li::before { content: '🌸'; position: absolute; left: 0; font-size: 1rem; }
+        ul li { position: relative; padding-left: 25px; margin-bottom: 15px; font-size: 0.95rem; word-break: keep-all; line-height: 1.6; color: #444; }
+        ul li::before { content: '🌸'; position: absolute; left: 0; font-size: 0.9rem; }
 
-        .yt-btn { display: block; background: #ff0000; color: white !important; text-align: center; padding: 18px; border-radius: 15px; text-decoration: none; font-weight: bold; margin-top: 30px; font-size: 1rem; box-shadow: 0 5px 20px rgba(255,0,0,0.3); }
-        .footer { text-align: center; padding: 40px 20px; color: #bbb; font-size: 0.85rem; }
+        .yt-btn { display: block; background: #ff0000; color: white !important; text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; margin-top: 25px; font-size: 0.95rem; }
+        .footer { text-align: center; padding: 40px 20px; color: #bbb; font-size: 0.8rem; }
+
+        /* 모바일 대응 미세 조정 */
+        @media (max-width: 380px) {
+            .info-box p { font-size: 0.82rem; } /* 아주 작은 폰은 글자 더 축소 */
+            .welcome-msg { font-size: 1rem; bottom: 75px; }
+        }
     </style>
 </head>
 <body>
@@ -75,83 +102,80 @@
         <p>2026 J-US RECRUITING CAMPAIGN</p>
         <h1>SAPPORO</h1>
         <p>MAY 13 — MAY 16, 2026</p>
+        <div class="welcome-msg">제이어스 사업단 여러분 환영합니다</div>
     </header>
 
     <div class="container-body">
-        <div class="content-card">
-            
-            <div class="fixed-overview">
-                <h2>여행 개요</h2>
-                <div class="day-info">
-                    <p><strong>• 일시:</strong> 2026년 5월 13일(수) ~ 5월 16일(토)</p>
-                    <p><strong>• 항공:</strong> 대한항공 KE 765 / KE 766</p>
-                    <p><strong>• 숙소:</strong> 노보리베츠 마호로바(1박) / 머큐어 삿포로(2박)</p>
-                    <p><strong>• 미팅:</strong> 5월 13일(수) 07:30 인천공항 제2터미널 (여행 안내탭 중 약도 참조)</p>
-                </div>
+        <div class="fixed-card">
+            <h2>여행 개요</h2>
+            <div class="info-box">
+                <p><strong>• 일시:</strong> 2026년 05월 13일(수) ~ 16일(토)</p>
+                <p><strong>• 항공:</strong> 대한항공 KE 765 / KE 766</p>
+                <p><strong>• 숙소:</strong> 마호로바(1박) / 머큐어 삿포로(2박)</p>
+                <p><strong>• 미팅:</strong> 05.13(수) 07:30 인천공항 T2</p>
             </div>
+        </div>
 
-            <div class="tab-nav-large">
-                <button id="defaultTab" class="tab-link-lg active" onclick="showTab(event, 'info')">여행 안내</button>
-                <button class="tab-link-lg" onclick="showTab(event, 'day1')">1일차</button>
-                <button class="tab-link-lg" onclick="showTab(event, 'day2')">2일차</button>
-                <button class="tab-link-lg" onclick="showTab(event, 'day3')">3일차</button>
-                <button class="tab-link-lg" onclick="showTab(event, 'day4')">4일차</button>
+        <div class="tab-card">
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="showTab(event, 'info')">여행 안내</button>
+                <button class="tab-btn" onclick="showTab(event, 'day1')">1일차</button>
+                <button class="tab-btn" onclick="showTab(event, 'day2')">2일차</button>
+                <button class="tab-btn" onclick="showTab(event, 'day3')">3일차</button>
+                <button class="tab-btn" onclick="showTab(event, 'day4')">4일차</button>
             </div>
 
             <div id="info" class="tab-panel active">
-                <h2>상세 여행 안내</h2>
+                <h3 style="color:var(--primary); margin-top:0; font-size:1.2rem;">상세 여행 안내</h3>
                 <ul>
-                    <li>인천공항 제2터미널(T2) 3층 출국장 미팅입니다.</li>
-                    <li>여권 유효기간 6개월 이상 여부를 꼭 확인하세요.</li>
-                    <li>비짓재팬웹(VJW) 등록은 출발 전 필수입니다.</li>
-                    <li>현지 5월 날씨(3~14도)에 대비해 겉옷을 준비하세요.</li>
-                    <li>110V 전용 어댑터(돼지코)를 반드시 지참하세요.</li>
-                    <li>여행용 엔화 현금을 미리 환전하시길 권장합니다.</li>
+                    <li>인천공항 제2터미널(T2) 3층 출국장 미팅</li>
+                    <li>여권 유효기간 6개월 이상 필수 확인</li>
+                    <li>비짓재팬웹(VJW) 출발 전 등록 필수</li>
+                    <li>현지 날씨(3~14도) 대비 겉옷 준비</li>
+                    <li>110V 전용 어댑터(돼지코) 지참</li>
                 </ul>
                 <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-btn">비짓재팬웹 등록 가이드 영상</a>
             </div>
 
             <div id="day1" class="tab-panel">
-                <h2>1일차 일정</h2>
-                <div class="day-info">
-                    <p style="color:#e11d48; font-weight:bold;">출국: KE 765 (10:35 - 13:25)</p>
+                <h3 style="color:var(--primary); margin-top:0; font-size:1.2rem;">1일차 일정</h3>
+                <div class="info-box" style="margin-bottom:15px; padding:12px;">
+                    <span style="color:#e11d48; font-weight:bold; font-size:0.9rem;">🛫 KE 765 (10:35 - 13:25)</span>
                 </div>
                 <ul>
                     <li>인천공항 제2터미널 집결 및 수속</li>
-                    <li>대한항공 탑승 및 삿포로 신치토세 도착</li>
-                    <li>노보리베츠 지옥계곡 관광 및 이동</li>
-                    <li>호텔 체크인 및 석식(가이세키) 후 온천</li>
+                    <li>대한항공 탑승 및 삿포로 도착</li>
+                    <li>노보리베츠 지옥계곡 관광</li>
+                    <li>호텔 체크인 및 석식 후 온천</li>
                 </ul>
             </div>
 
             <div id="day2" class="tab-panel">
-                <h2>2일차 일정</h2>
-                <div class="day-info"><strong>노보리베츠 & 삿포로 시내 투어</strong></div>
+                <h3 style="color:var(--primary); margin-top:0; font-size:1.2rem;">2일차 일정</h3>
                 <ul>
-                    <li>다테 지다이무라(시대촌) 민속촌 관람</li>
-                    <li>시로이코이비토 파크 과자 박물관 견학</li>
-                    <li>삿포로 이동 및 머큐어 호텔 체크인</li>
+                    <li>다테 지다이무라(시대촌) 관람</li>
+                    <li>시로이코이비토 파크 견학</li>
+                    <li>머큐어 호텔 삿포로 체크인</li>
                 </ul>
             </div>
 
             <div id="day3" class="tab-panel">
-                <h2>3일차 일정</h2>
-                <div class="day-info"><strong>오타루 감성 & 삿포로 맥주</strong></div>
+                <h3 style="color:var(--primary); margin-top:0; font-size:1.2rem;">3일차 일정</h3>
                 <ul>
                     <li>오타루 운하 및 오르골당 산책</li>
                     <li>삿포로 맥주 박물관 견학 및 시음</li>
-                    <li>석식: 난다(NANDA) 해산물 뷔페 만찬</li>
+                    <li>석식: 난다(NANDA) 해산물 뷔페</li>
                 </ul>
             </div>
 
             <div id="day4" class="tab-panel">
-                <h2>4일차 일정</h2>
-                <div class="day-info">
-                    <p style="color:#e11d48; font-weight:bold;">귀국: KE 766 (14:50 - 17:55)</p>
+                <h3 style="color:var(--primary); margin-top:0; font-size:1.2rem;">4일차 일정</h3>
+                <div class="info-box" style="margin-bottom:15px; padding:12px;">
+                    <span style="color:#e11d48; font-weight:bold; font-size:0.9rem;">🛬 KE 766 (14:50 - 17:55)</span>
                 </div>
                 <ul>
-                    <li>호텔 조식 후 11:00 체크아웃</li>
-                    <li>신치토세 공항 이동 및 면세점 쇼핑</li>
+                    <li>호텔 체크아웃 후 공항 이동</li>
+                    <li>신치토세 공항 면세점 쇼핑</li>
                     <li>인천공항 제2터미널 도착 및 해산</li>
                 </ul>
             </div>
@@ -163,22 +187,18 @@
 
 <script>
     function showTab(evt, tabId) {
-        var i, tabpanel, tablinks;
-        // 1. 모든 탭 패널 숨기기
+        var i, tabpanel, tabbtns;
         tabpanel = document.getElementsByClassName("tab-panel");
         for (i = 0; i < tabpanel.length; i++) {
             tabpanel[i].style.display = "none";
             tabpanel[i].classList.remove("active");
         }
-        // 2. 모든 탭 버튼 활성화 해제
-        tablinks = document.getElementsByClassName("tab-link-lg");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("active");
+        tabbtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabbtns.length; i++) {
+            tabbtns[i].classList.remove("active");
         }
-        // 3. 클릭한 탭만 보이기
         document.getElementById(tabId).style.display = "block";
         document.getElementById(tabId).classList.add("active");
-        // 4. 클릭한 버튼 강조
         evt.currentTarget.classList.add("active");
     }
 </script>
