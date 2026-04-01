@@ -3,56 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2026 J-US Recruiting Campaign</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <title>2026 J-US Recruiting Campaign in Sapporo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #004a99; --accent: #e11d48; --bg: #f4f7f9; }
+        :root { --primary: #004a99; --accent: #e11d48; --gold: #d4af37; --dark: #1a1a1a; --white: #ffffff; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; background: var(--bg); color: #333; line-height: 1.6; word-break: keep-all; }
-        
-        /* 헤더: 모바일에서 글씨 크기 자동 축소 */
-        header { 
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('1st photo.jpg.jpg');
-            background-size: cover; background-position: center; color: #fff;
-            height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;
-        }
-        header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 8vw, 3.5rem); margin: 10px 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        header p { font-size: clamp(1rem, 4vw, 1.3rem); font-weight: 300; margin: 5px 0; }
+        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; background: #eceff1; color: #333; line-height: 1.6; word-break: keep-all; }
 
-        .container { max-width: 800px; margin: -40px auto 60px; padding: 0 15px; }
-        .card { background: #fff; border-radius: 15px; padding: 30px 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); margin-bottom: 30px; }
-        h2 { color: var(--primary); font-size: 1.5rem; border-left: 5px solid var(--primary); padding-left: 15px; margin-bottom: 25px; }
+        /* 메인 헤더: 인카 대만 스타일의 압도적인 전면 디자인 */
+        header { 
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('1st photo.jpg.jpg');
+            background-size: cover; background-position: center; color: var(--white);
+            height: 75vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;
+        }
+        header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.5rem, 10vw, 4.5rem); margin: 10px 0; text-shadow: 3px 3px 15px rgba(0,0,0,0.6); letter-spacing: -1px; }
+        header p { font-size: clamp(1rem, 4vw, 1.4rem); font-weight: 300; letter-spacing: 3px; margin: 5px 0; text-transform: uppercase; }
+
+        .container { max-width: 900px; margin: -60px auto 80px; padding: 0 15px; }
+        
+        /* 카드형 레이아웃 */
+        .card { background: var(--white); border-radius: 24px; padding: 40px 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.12); margin-bottom: 40px; position: relative; overflow: hidden; }
+        h2 { color: var(--primary); font-size: 1.6rem; font-family: 'Montserrat', sans-serif; font-weight: 800; border-left: 6px solid var(--gold); padding-left: 15px; margin-bottom: 30px; }
 
         /* 모바일 최적화 일정 박스 */
         .day-box { 
-            background-size: cover; background-position: center; border-radius: 12px; 
-            margin-bottom: 20px; position: relative; overflow: hidden;
+            background-size: cover; background-position: center; border-radius: 20px; 
+            margin-bottom: 30px; position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
         .day-overlay { 
-            background: rgba(255, 255, 255, 0.92); padding: 20px; margin: 10px; 
-            border-radius: 10px; position: relative; z-index: 2;
+            background: rgba(255, 255, 255, 0.94); padding: 25px; margin: 15px; 
+            border-radius: 15px; position: relative; z-index: 2; border: 1px solid rgba(0,0,0,0.05);
         }
         
-        .day-header { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .day-title { font-weight: 800; font-size: 1.1rem; color: var(--primary); }
-        .flight-tag { display: inline-block; background: var(--accent); color: white; padding: 3px 10px; border-radius: 4px; font-size: 0.8rem; align-self: flex-start; }
+        .day-header { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid var(--gold); padding-bottom: 12px; }
+        .day-title { font-weight: 900; font-size: 1.2rem; color: var(--dark); letter-spacing: -0.5px; }
+        .flight-tag { display: inline-block; background: var(--primary); color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; align-self: flex-start; }
 
+        /* 깃허브 사진 경로 연결 */
         .day1 { background-image: url('day1_bg.jpg.jpg'); }
+        .day2 { background-image: url('day2_bg.jpg.jpg'); }
+        .day3 { background-image: url('day3_bg.jpg.jpg'); }
         .day4 { background-image: url('day4_bg.jpg.jpg'); }
 
         ul { list-style: none; padding: 0; margin: 0; }
-        ul li { position: relative; padding-left: 25px; margin-bottom: 10px; font-size: 0.95rem; }
-        ul li::before { content: '🌸'; position: absolute; left: 0; font-size: 0.8rem; }
+        ul li { position: relative; padding-left: 28px; margin-bottom: 15px; font-size: 1.05rem; font-weight: 400; color: #444; }
+        ul li::before { content: '◈'; position: absolute; left: 0; color: var(--gold); font-weight: 900; }
 
-        /* 안내 사항 그리드: 모바일은 1열로 */
-        .notice-grid { display: flex; flex-direction: column; gap: 15px; }
-        .notice-item { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; }
-        .notice-item h4 { color: var(--primary); margin: 0 0 10px 0; font-size: 1rem; }
-        .notice-item p { font-size: 0.9rem; margin: 5px 0; }
+        /* 안내 사항 그리드 */
+        .notice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .notice-item { background: #f9fbff; padding: 25px; border-radius: 18px; border: 1px solid #eef2f8; transition: transform 0.3s; }
+        .notice-item:hover { transform: translateY(-5px); }
+        .notice-item h4 { color: var(--primary); margin: 0 0 12px 0; font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
         
-        .yt-link { display: block; background: #ff0000; color: white !important; text-align: center; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 0.9rem; }
+        .yt-btn { 
+            display: flex; align-items: center; justify-content: center; background: #ff0000; color: white !important; 
+            padding: 14px; border-radius: 12px; text-decoration: none !important; font-weight: 800; margin-top: 15px; font-size: 0.95rem; box-shadow: 0 5px 15px rgba(255,0,0,0.2);
+        }
 
-        .footer { text-align: center; padding: 40px 20px; color: #888; font-size: 0.8rem; }
+        .footer { text-align: center; padding: 60px 20px; background: var(--dark); color: rgba(255,255,255,0.5); font-size: 0.85rem; letter-spacing: 1px; }
+
+        /* 모바일 미세 조정 */
+        @media (max-width: 600px) {
+            .card { padding: 35px 20px; }
+            h2 { font-size: 1.4rem; }
+            .day-overlay { padding: 20px 15px; margin: 10px; }
+            ul li { font-size: 0.95rem; }
+        }
     </style>
 </head>
 <body>
@@ -60,31 +76,33 @@
 <header>
     <p>2026 J-US RECRUITING CAMPAIGN</p>
     <h1>SAPPORO</h1>
-    <p>2026. 05. 13 - 05. 16</p>
+    <p>MAY 13 — MAY 16, 2026</p>
 </header>
 
 <div class="container">
     <div class="card">
-        <h2>EVENT INFO</h2>
-        <div style="font-size: 0.95rem;">
-            <p><strong>• 미팅:</strong> 05/13(수) 07:30 인천공항 T2 3층 [cite: 14]</p>
-            <p><strong>• 항공:</strong> 대한항공 (KE 765 / KE 766) [cite: 11, 12]</p>
-            <p><strong>• 숙소:</strong> 노보리베츠 마호로바 & 삿포로 머큐어</p>
+        <h2>CAMPAIGN OVERVIEW</h2>
+        <div style="font-size: 1.05rem; color: #555;">
+            <p><strong>• MEETING:</strong> 05/13(WED) 07:30 인천공항 제2터미널(T2) 3층</p>
+            <p><strong>• AIRLINE:</strong> 대한항공 (KOREAN AIR) 직항편 이용</p>
+            <p><strong>• STAY:</strong> 노보리베츠 마호로바 & 삿포로 머큐어 호텔</p>
         </div>
     </div>
 
     <div class="card">
-        <h2>SCHEDULE</h2>
+        <h2>DETAILED SCHEDULE</h2>
+        
         <div class="day-box day1">
             <div class="day-overlay">
                 <div class="day-header">
-                    <span class="day-title">DAY 01 | 05. 13 (WED)</span>
-                    <span class="flight-tag">🛫 KE 765 (10:35 - 13:25) [cite: 12]</span>
+                    <span class="day-title">DAY 01 | 2026. 05. 13 (WED)</span>
+                    <span class="flight-tag">🛫 KE 765 (10:35 ICN - 13:25 CTS)</span>
                 </div>
                 <ul>
-                    <li>인천공항 제2터미널 집결 및 수속 [cite: 14]</li>
-                    <li>삿포로 신치토세 공항 도착 [cite: 12]</li>
-                    <li>노보리베츠 지옥계곡 관광 및 가이세키 만찬</li>
+                    <li><strong>07:30 인천공항 제2터미널(T2) 집결</strong> 및 인원 점검</li>
+                    <li>대한항공 수속 후 삿포로 향발</li>
+                    <li>신치토세 공항 도착 후 노보리베츠 이동</li>
+                    <li><strong>지옥계곡</strong> 관광 및 호텔 가이세키 석식</li>
                 </ul>
             </div>
         </div>
@@ -92,38 +110,46 @@
         <div class="day-box day4">
             <div class="day-overlay">
                 <div class="day-header">
-                    <span class="day-title">DAY 04 | 05. 16 (SAT)</span>
-                    <span class="flight-tag">🛬 KE 766 (14:50 - 17:55) [cite: 12]</span>
+                    <span class="day-title">DAY 04 | 2026. 05. 16 (SAT)</span>
+                    <span class="flight-tag">🛬 KE 766 (14:50 CTS - 17:55 ICN)</span>
                 </div>
                 <ul>
-                    <li>호텔 조식 후 체크아웃 (11:00)</li>
+                    <li>호텔 조식 후 체크아웃 (**11:00**)</li>
                     <li>면세점 자유 쇼핑 및 공항 이동</li>
-                    <li>인천공항 도착 및 해산 [cite: 12]</li>
+                    <li>인천공항 제2터미널 도착 및 캠페인 종료</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="card">
-        <h2>TRAVEL INFO</h2>
+        <h2>TRAVEL GUIDE</h2>
         <div class="notice-grid">
             <div class="notice-item">
-                <h4>🛂 여권 및 입국 [cite: 1, 3]</h4>
-                <p>• 여권 유효기간 6개월 이상 필수 [cite: 6]</p>
-                <p>• 비짓 재팬 웹 사전 등록 [cite: 8]</p>
-                <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-link">비짓재팬 등록 가이드 [cite: 9]</a>
+                <h4>🛂 여권 및 입국 수속</h4>
+                <p>• 여권 유효기간 6개월 이상 필수 확인</p>
+                <p>• <strong>Visit Japan Web</strong> 온라인 사전 등록 필수</p>
+                <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-btn">입국 등록 가이드 영상</a>
             </div>
             <div class="notice-item">
-                <h4>💼 수하물 및 기타 [cite: 31]</h4>
-                <p>• 위탁 수하물 1인 15kg 이내 [cite: 39]</p>
-                <p>• 전압 110V (어댑터 필수) [cite: 33]</p>
-                <p>• 보조배터리는 기내 휴대 [cite: 38]</p>
+                <h4>💼 수하물 및 필수품</h4>
+                <p>• 위탁 수하물 1인 15kg (1개) 규정</p>
+                <p>• 전압 110V 전용 (돼지코 어댑터 지참)</p>
+                <p>• 보조배터리 및 라이터는 반드시 기내 휴대</p>
+            </div>
+            <div class="notice-item">
+                <h4>🧥 날씨 및 환전</h4>
+                <p>• 최저 3도 ~ 최고 14도 (겨울/간절기 복장)</p>
+                <p>• 엔화 현금 환전 권장 (신용카드 불가 매장 대비)</p>
+                <p>• 시차 정보: 한국과 시차 없음 (동일 시간)</p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="footer">© 2026 J-US Recruiting Campaign. All rights reserved.</div>
+<div class="footer">
+    © 2026 J-US RECRUITING CAMPAIGN. ALL RIGHTS RESERVED.
+</div>
 
 </body>
 </html>
