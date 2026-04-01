@@ -9,6 +9,7 @@
         :root { --primary: #004a99; --gold: #d4af37; --bg: #f4f7f9; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
+        /* 모바일 잘림 방지 및 자연스러운 스크롤 */
         body, html { 
             margin: 0; padding: 0; min-height: 100vh;
             font-family: 'Noto Sans KR', sans-serif;
@@ -18,7 +19,7 @@
 
         .main-wrapper { width: 100%; display: block; }
 
-        /* 상단 헤더: 화면의 70% 수준 확대 */
+        /* 상단 헤더: 웅장한 배경 (70vh) */
         .top-header { 
             height: 70vh; min-height: 450px; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center; color: white;
@@ -27,11 +28,11 @@
             border-radius: 0 0 40px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             padding: 20px;
         }
-        .top-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.5rem, 10vw, 4rem); margin: 15px 0; text-shadow: 3px 3px 15px rgba(0,0,0,0.7); font-weight: 900; }
+        .top-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.2rem, 10vw, 4rem); margin: 15px 0; text-shadow: 3px 3px 15px rgba(0,0,0,0.7); font-weight: 900; }
         .top-header p { font-size: 1.1rem; margin: 0; letter-spacing: 5px; font-weight: 300; text-transform: uppercase; }
 
         /* 본문 컨테이너 */
-        .container-body { margin-top: -60px; padding: 0 15px 120px; position: relative; z-index: 10; }
+        .container-body { margin-top: -60px; padding: 0 15px 100px; position: relative; z-index: 10; }
 
         /* 본문 카드 */
         .content-card {
@@ -40,7 +41,7 @@
             width: 100%; height: auto;
         }
 
-        /* 탭 메뉴 스타일 */
+        /* 탭 메뉴 스타일: 사이즈 확대 */
         .tab-nav-large { display: flex; gap: 8px; margin: 25px 0; overflow-x: auto; padding: 5px 2px 15px; scrollbar-width: none; }
         .tab-nav-large::-webkit-scrollbar { display: none; }
         .tab-link-lg {
@@ -79,18 +80,18 @@
     <div class="container-body">
         <div class="content-card">
             
-            <div class="overview-section">
+            <div class="fixed-overview">
                 <h2>여행 개요</h2>
                 <div class="day-info">
                     <p><strong>• 일시:</strong> 2026년 5월 13일(수) ~ 5월 16일(토)</p>
                     <p><strong>• 항공:</strong> 대한항공 KE 765 / KE 766</p>
                     <p><strong>• 숙소:</strong> 노보리베츠 마호로바(1박) / 머큐어 삿포로(2박)</p>
-                    <p><strong>• 미팅:</strong> 5월 13일(수) 07:30 인천공항 제2터미널 (여행안내문 내 지도 참조)</p>
+                    <p><strong>• 미팅:</strong> 5월 13일(수) 07:30 인천공항 제2터미널 (여행 안내탭 중 약도 참조)</p>
                 </div>
             </div>
 
             <div class="tab-nav-large">
-                <button class="tab-link-lg active" onclick="showTab(event, 'info')">여행 안내</button>
+                <button id="defaultTab" class="tab-link-lg active" onclick="showTab(event, 'info')">여행 안내</button>
                 <button class="tab-link-lg" onclick="showTab(event, 'day1')">1일차</button>
                 <button class="tab-link-lg" onclick="showTab(event, 'day2')">2일차</button>
                 <button class="tab-link-lg" onclick="showTab(event, 'day3')">3일차</button>
@@ -119,13 +120,13 @@
                     <li>인천공항 제2터미널 집결 및 수속</li>
                     <li>대한항공 탑승 및 삿포로 신치토세 도착</li>
                     <li>노보리베츠 지옥계곡 관광 및 이동</li>
-                    <li>호텔 체크인 및 석식(가이세키)</li>
+                    <li>호텔 체크인 및 석식(가이세키) 후 온천</li>
                 </ul>
             </div>
 
             <div id="day2" class="tab-panel">
                 <h2>2일차 일정</h2>
-                <div class="day-info"><strong>노보리베츠 & 삿포로 시내 관광</strong></div>
+                <div class="day-info"><strong>노보리베츠 & 삿포로 시내 투어</strong></div>
                 <ul>
                     <li>다테 지다이무라(시대촌) 민속촌 관람</li>
                     <li>시로이코이비토 파크 과자 박물관 견학</li>
@@ -139,7 +140,7 @@
                 <ul>
                     <li>오타루 운하 및 오르골당 산책</li>
                     <li>삿포로 맥주 박물관 견학 및 시음</li>
-                    <li>석식: 난다(NANDA) 해산물 뷔페</li>
+                    <li>석식: 난다(NANDA) 해산물 뷔페 만찬</li>
                 </ul>
             </div>
 
@@ -149,7 +150,7 @@
                     <p style="color:#e11d48; font-weight:bold;">귀국: KE 766 (14:50 - 17:55)</p>
                 </div>
                 <ul>
-                    <li>호텔 체크아웃 및 자유 시간</li>
+                    <li>호텔 조식 후 11:00 체크아웃</li>
                     <li>신치토세 공항 이동 및 면세점 쇼핑</li>
                     <li>인천공항 제2터미널 도착 및 해산</li>
                 </ul>
@@ -163,17 +164,21 @@
 <script>
     function showTab(evt, tabId) {
         var i, tabpanel, tablinks;
+        // 1. 모든 탭 패널 숨기기
         tabpanel = document.getElementsByClassName("tab-panel");
         for (i = 0; i < tabpanel.length; i++) {
             tabpanel[i].style.display = "none";
             tabpanel[i].classList.remove("active");
         }
+        // 2. 모든 탭 버튼 활성화 해제
         tablinks = document.getElementsByClassName("tab-link-lg");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].classList.remove("active");
         }
+        // 3. 클릭한 탭만 보이기
         document.getElementById(tabId).style.display = "block";
         document.getElementById(tabId).classList.add("active");
+        // 4. 클릭한 버튼 강조
         evt.currentTarget.classList.add("active");
     }
 </script>
