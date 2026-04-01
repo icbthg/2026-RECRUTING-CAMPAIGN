@@ -9,42 +9,49 @@
         :root { --primary: #004a99; --gold: #d4af37; --bg: #f4f7f9; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
-        /* 전체 화면 고정 배경 및 스크롤 방지 */
+        /* 전체 화면 설정 */
         body, html { 
-            margin: 0; padding: 0; height: 100%; overflow: hidden; 
+            margin: 0; padding: 0; min-height: 100vh;
             font-family: 'Noto Sans KR', sans-serif;
-            background: #333; /* 사진 로딩 전 기본 배경 */
+            background: #333; 
+            overflow-x: hidden; /* 가로 스크롤 방지 */
         }
 
         .main-wrapper {
-            height: 100%; display: flex; flex-direction: column;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
+            min-height: 100vh; display: flex; flex-direction: column;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3));
         }
 
-        /* 상단 헤더: 기존보다 3배 넓은 디자인 */
+        /* 1. 상단 헤더: 기존보다 3배 넓은 디자인 */
         .top-header { 
-            height: 35vh; display: flex; flex-direction: column;
+            height: 35vh; min-height: 250px; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center; color: white;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('1st photo.jpg');
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('1st photo.jpg');
             background-size: cover; background-position: center;
             border-radius: 0 0 30px 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            padding: 20px;
         }
         .top-header h1 { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin: 10px 0; text-shadow: 3px 3px 10px rgba(0,0,0,0.6); font-weight: 900; }
         .top-header p { font-size: 0.9rem; margin: 0; letter-spacing: 4px; font-weight: 300; text-transform: uppercase; }
 
-        /* 본문 컨테이너 */
-        .container-body { flex: 1; display: flex; flex-direction: column; margin-top: -30px; padding: 0 15px 20px; }
+        /* 2. 본문 컨테이너 (헤더와 살짝 겹침) */
+        .container-body { flex: 1; display: flex; flex-direction: column; margin-top: -40px; padding: 0 15px 30px; }
 
-        /* 본문 카드 */
+        /* 3. 본문 카드 (잘림 방지를 위해 min-height 설정 및 내부 스크롤 허용) */
         .content-card {
-            flex: 1; background: rgba(255, 255, 255, 0.95); border-radius: 25px;
+            background: rgba(255, 255, 255, 0.98); border-radius: 25px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2); padding: 30px 20px;
-            overflow-y: auto; position: relative;
+            position: relative; overflow: visible; /* 내용이 잘리지 않도록 변경 */
         }
 
-        /* 큼직한 탭 메뉴 (여행 개요 아래 위치) */
-        .tab-nav-large { display: flex; gap: 8px; margin: 20px 0; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
+        /* 4. 큼직한 탭 메뉴 (개요 아래 배치) */
+        .tab-nav-large { 
+            display: flex; gap: 8px; margin: 20px 0; 
+            overflow-x: auto; padding: 5px 2px 15px; 
+            scrollbar-width: none; 
+        }
         .tab-nav-large::-webkit-scrollbar { display: none; }
+        
         .tab-link-lg {
             flex: 1; min-width: 75px; padding: 15px 5px; border-radius: 12px;
             border: 2px solid #eee; background: #f9f9f9; color: #666;
@@ -52,20 +59,30 @@
         }
         .tab-link-lg.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 4px 10px rgba(0,74,153,0.3); }
 
-        /* 패널 스타일 */
+        /* 패널 전환 효과 */
         .tab-panel { display: none; animation: fadeIn 0.4s ease; }
         .tab-panel.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         h2 { color: var(--primary); font-size: 1.4rem; margin: 0 0 15px 0; border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
+        
+        /* 정보 박스 스타일 */
         .day-info { background: #f8fafc; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 5px solid var(--primary); word-break: keep-all; }
-        .day-info p { margin: 8px 0; line-height: 1.5; font-size: 1rem; }
+        .day-info p { margin: 8px 0; line-height: 1.5; font-size: 1.05rem; }
         
         ul { list-style: none; padding: 0; margin: 0; }
-        ul li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 1rem; word-break: keep-all; line-height: 1.6; }
+        ul li { position: relative; padding-left: 28px; margin-bottom: 15px; font-size: 1rem; word-break: keep-all; line-height: 1.6; color: #444; }
         ul li::before { content: '🌸'; position: absolute; left: 0; }
 
-        .yt-btn { display: block; background: #ff0000; color: white !important; text-align: center; padding: 14px; border-radius: 10px; text-decoration: none; font-weight: bold; margin-top: 20px; box-shadow: 0 4px 10px rgba(255,0,0,0.2); }
+        /* 버튼 스타일 */
+        .yt-btn { 
+            display: block; background: #ff0000; color: white !important; 
+            text-align: center; padding: 16px; border-radius: 12px; 
+            text-decoration: none; font-weight: bold; margin-top: 25px; 
+            box-shadow: 0 4px 10px rgba(255,0,0,0.2); 
+        }
+
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8rem; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -83,88 +100,101 @@
             <div id="info" class="tab-panel active">
                 <h2>여행 개요</h2>
                 <div class="day-info">
-                    <p><strong>• 일시:</strong> 2026년 5월 13일(수) ~ 5월 16일(토) [cite: 4, 12]</p>
-                    <p><strong>• 항공:</strong> 대한항공 KE 765 / KE 766 [cite: 12]</p>
-                    <p><strong>• 숙소:</strong> 노보리베츠 마호로바 1박 / 머큐어 삿포로 호텔 2박 </p>
-                    <p><strong>• 미팅:</strong> 5월 13일(수) 07:30 인천공항 제2터미널 (안내사항 내 지도 참조) [cite: 2, 14]</p>
+                    <p><strong>• 일시:</strong> 2026년 5월 13일(수) ~ 5월 16일(토)</p>
+                    <p><strong>• 항공:</strong> 대한항공 KE 765 / KE 766</p>
+                    <p><strong>• 숙소:</strong> 노보리베츠 마호로바 1박 / 머큐어 삿포로 2박</p>
+                    <p><strong>• 미팅:</strong> 5월 13일(수) 07:30 인천공항 제2터미널 (안내사항 내 지도 참조)</p>
                 </div>
                 <ul>
-                    <li>대한항공 수속은 인천공항 제2터미널에서 진행됩니다. [cite: 13, 14]</li>
-                    <li>여권 유효기간은 출발일 기준 6개월 이상 필수입니다. [cite: 6]</li>
-                    <li>일본 내 원활한 소통을 위해 데이터 로밍 또는 와이파이 도시락을 준비하세요. [cite: 34]</li>
+                    <li>대한항공 수속은 <strong>인천공항 제2터미널(T2)</strong>입니다.</li>
+                    <li>여권 유효기간은 <strong>6개월 이상</strong> 필수입니다.</li>
+                    <li>일본 전용 <strong>110V 어댑터(돼지코)</strong>를 준비해 주세요.</li>
                 </ul>
                 <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-btn">비짓재팬웹 등록 가이드 영상</a>
             </div>
 
             <div class="tab-nav-large">
-                <button class="tab-link-lg active" onclick="showTab('info')">개요</button>
-                <button class="tab-link-lg" onclick="showTab('day1')">1일차</button>
-                <button class="tab-link-lg" onclick="showTab('day2')">2일차</button>
-                <button class="tab-link-lg" onclick="showTab('day3')">3일차</button>
-                <button class="tab-link-lg" onclick="showTab('day4')">4일차</button>
+                <button class="tab-link-lg active" onclick="showTab(event, 'info')">개요</button>
+                <button class="tab-link-lg" onclick="showTab(event, 'day1')">1일차</button>
+                <button class="tab-link-lg" onclick="showTab(event, 'day2')">2일차</button>
+                <button class="tab-link-lg" onclick="showTab(event, 'day3')">3일차</button>
+                <button class="tab-link-lg" onclick="showTab(event, 'day4')">4일차</button>
             </div>
 
             <div id="day1" class="tab-panel">
                 <h2>DAY 01 | 05. 13 (수)</h2>
                 <div class="day-info">
-                    <p style="color:#e11d48; font-weight:bold;">🛫 KE 765 (10:35 인천 출발 / 13:25 삿포로 도착) [cite: 12]</p>
+                    <p style="color:#e11d48; font-weight:bold;">🛫 KE 765 (10:35 ICN - 13:25 CTS)</p>
                 </div>
                 <ul>
-                    <li>07:30 인천공항 제2터미널 집결 및 수속 [cite: 14]</li>
-                    <li>대한항공 탑승 및 삿포로 신치토세 공항 도착 [cite: 12]</li>
-                    <li>노보리베츠 이동 후 <strong>지옥계곡</strong> 관광 </li>
-                    <li>호텔 마호로바 체크인 및 가이세키 석식 </li>
+                    <li>07:30 인천공항 제2터미널 집결 및 수속</li>
+                    <li>대한항공 탑승 및 삿포로 신치토세 공항 도착</li>
+                    <li>노보리베츠 이동 후 <strong>지옥계곡</strong> 관광</li>
+                    <li>호텔 체크인 및 석식(가이세키) 후 온천욕</li>
                 </ul>
             </div>
 
             <div id="day2" class="tab-panel">
                 <h2>DAY 02 | 05. 14 (목)</h2>
-                <div class="day-info"><strong>노보리베츠 & 삿포로 시내 관광</strong></div>
+                <div class="day-info"><strong>노보리베츠 & 삿포로 시내 투어</strong></div>
                 <ul>
-                    <li>호텔 조식 후 체크아웃 및 이동 </li>
-                    <li>노보리베츠 다테 지다이무라(시대촌) 민속촌 관람 </li>
-                    <li>시로이코이비토 파크(과자 박물관) 견학 및 정원 산책 </li>
-                    <li>삿포로 시내 이동 및 머큐어 호텔 삿포로 체크인 </li>
+                    <li>호텔 조식 후 체크아웃 및 이동</li>
+                    <li><strong>다테 지다이무라(시대촌)</strong> 에도 민속촌 관람</li>
+                    <li><strong>시로이코이비토 파크</strong> 박물관 및 정원 산책</li>
+                    <li>삿포로 이동 및 머큐어 호텔 체크인</li>
                 </ul>
             </div>
 
             <div id="day3" class="tab-panel">
                 <h2>DAY 03 | 05. 15 (금)</h2>
-                <div class="day-info"><strong>오타루 감성 투어 & 삿포로 맥주 박물관</strong></div>
+                <div class="day-info"><strong>오타루 감성 & 삿포로 박물관</strong></div>
                 <ul>
-                    <li>오타루 이동 및 운하/오르골당 관광 </li>
-                    <li>삿포로 맥주 박물관 견학 및 시음 </li>
-                    <li>석식: 난다(NANDA) 해산물 뷔페 만찬 </li>
+                    <li>오타루 이동 및 <strong>오타루 운하/오르골당</strong> 관광</li>
+                    <li>삿포로 맥주 박물관 견학 및 시음</li>
+                    <li>석식: <strong>난다(NANDA) 해산물 뷔페</strong> 만찬</li>
+                    <li>스스키노 시내 자유 일정 및 야경 감상</li>
                 </ul>
             </div>
 
             <div id="day4" class="tab-panel">
                 <h2>DAY 04 | 05. 16 (토)</h2>
                 <div class="day-info">
-                    <p style="color:#e11d48; font-weight:bold;">🛬 KE 766 (14:50 삿포로 출발 / 17:55 인천 도착) [cite: 12]</p>
+                    <p style="color:#e11d48; font-weight:bold;">🛬 KE 766 (14:50 CTS - 17:55 ICN)</p>
                 </div>
                 <ul>
-                    <li>호텔 조식 후 체크아웃 및 자유 시간 </li>
-                    <li>면세점 자유 쇼핑 및 신치토세 공항 이동 </li>
-                    <li>인천공항 제2터미널 도착 및 해산 [cite: 12]</li>
+                    <li>호텔 조식 후 11:00 체크아웃</li>
+                    <li>신치토세 공항 이동 및 면세점 쇼핑</li>
+                    <li>대한항공 탑승 및 인천공항 귀국</li>
                 </ul>
             </div>
 
+            <div class="footer">© 2026 J-US Recruiting Campaign.</div>
         </div>
     </div>
 </div>
 
 <script>
-    function showTab(tabId) {
+    function showTab(evt, tabId) {
         // 모든 패널 숨기기
-        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
-        // 모든 탭 스타일 초기화
-        document.querySelectorAll('.tab-link-lg').forEach(link => link.classList.remove('active'));
-        
+        var i, tabpanel, tablinks;
+        tabpanel = document.getElementsByClassName("tab-panel");
+        for (i = 0; i < tabpanel.length; i++) {
+            tabpanel[i].style.display = "none";
+            tabpanel[i].classList.remove("active");
+        }
+        // 모든 탭 버튼 활성화 해제
+        tablinks = document.getElementsByClassName("tab-link-lg");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
         // 선택한 패널 보이기
-        document.getElementById(tabId).classList.add('active');
-        // 선택한 탭 활성화
-        event.currentTarget.classList.add('active');
+        document.getElementById(tabId).style.display = "block";
+        document.getElementById(tabId).classList.add("active");
+        // 선택한 탭 버튼 강조
+        evt.currentTarget.classList.add("active");
+        
+        // 클릭 시 화면 상단으로 자동 스크롤 방지 및 카드 상단으로 시점 고정
+        window.scrollTo({ top: 150, behavior: 'smooth' });
     }
 </script>
 
