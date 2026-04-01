@@ -3,153 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2026 J-US Recruiting Campaign in Sapporo</title>
+    <title>2026 J-US Sapporo Campaign</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #004a99; --accent: #e11d48; --gold: #d4af37; --dark: #1a1a1a; --white: #ffffff; }
+        :root { --primary: #004a99; --gold: #d4af37; --white: rgba(255, 255, 255, 0.92); }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; background: #eceff1; color: #333; line-height: 1.6; word-break: keep-all; }
-
-        /* 메인 헤더: 인카 대만 스타일의 압도적인 전면 디자인 */
-        header { 
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('1st photo.jpg.jpg');
-            background-size: cover; background-position: center; color: var(--white);
-            height: 75vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;
-        }
-        header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.5rem, 10vw, 4.5rem); margin: 10px 0; text-shadow: 3px 3px 15px rgba(0,0,0,0.6); letter-spacing: -1px; }
-        header p { font-size: clamp(1rem, 4vw, 1.4rem); font-weight: 300; letter-spacing: 3px; margin: 5px 0; text-transform: uppercase; }
-
-        .container { max-width: 900px; margin: -60px auto 80px; padding: 0 15px; }
         
-        /* 카드형 레이아웃 */
-        .card { background: var(--white); border-radius: 24px; padding: 40px 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.12); margin-bottom: 40px; position: relative; overflow: hidden; }
-        h2 { color: var(--primary); font-size: 1.6rem; font-family: 'Montserrat', sans-serif; font-weight: 800; border-left: 6px solid var(--gold); padding-left: 15px; margin-bottom: 30px; }
+        /* 1. 전체 화면 고정 배경 (내려가지 않음) */
+        body, html { 
+            margin: 0; padding: 0; height: 100%; overflow: hidden; 
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('1st photo.jpg.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
 
-        /* 모바일 최적화 일정 박스 */
-        .day-box { 
-            background-size: cover; background-position: center; border-radius: 20px; 
-            margin-bottom: 30px; position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        /* 전체 컨테이너 */
+        .main-wrapper {
+            height: 100%; display: flex; flex-direction: column;
+            padding: 20px; color: #333;
         }
-        .day-overlay { 
-            background: rgba(255, 255, 255, 0.94); padding: 25px; margin: 15px; 
-            border-radius: 15px; position: relative; z-index: 2; border: 1px solid rgba(0,0,0,0.05);
+
+        /* 상단 타이틀 */
+        .top-header { text-align: center; color: white; margin-bottom: 20px; }
+        .top-header h1 { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; margin: 0; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); }
+        .top-header p { font-size: 0.9rem; margin: 5px 0; letter-spacing: 2px; }
+
+        /* 2. 가로 탭 메뉴 (ISC 대만 스타일) */
+        .tab-nav {
+            display: flex; gap: 5px; overflow-x: auto; margin-bottom: 15px;
+            scrollbar-width: none; /* 파이어폭스 */
         }
+        .tab-nav::-webkit-scrollbar { display: none; } /* 크롬, 사파리 */
         
-        .day-header { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid var(--gold); padding-bottom: 12px; }
-        .day-title { font-weight: 900; font-size: 1.2rem; color: var(--dark); letter-spacing: -0.5px; }
-        .flight-tag { display: inline-block; background: var(--primary); color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; align-self: flex-start; }
+        .tab-link {
+            flex: 0 0 auto; padding: 10px 18px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.2); color: white; font-weight: bold; font-size: 0.85rem; cursor: pointer;
+        }
+        .tab-link.active { background: var(--primary); border-color: var(--primary); }
 
-        /* 깃허브 사진 경로 연결 */
-        .day1 { background-image: url('day1_bg.jpg.jpg'); }
-        .day2 { background-image: url('day2_bg.jpg.jpg'); }
-        .day3 { background-image: url('day3_bg.jpg.jpg'); }
-        .day4 { background-image: url('day4_bg.jpg.jpg'); }
+        /* 3. 본문 카드 박스 (한 장으로 구성) */
+        .content-card {
+            flex: 1; background: var(--white); border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            padding: 25px; overflow-y: auto; /* 카드 안에서만 스크롤 */
+            position: relative;
+        }
 
+        .tab-panel { display: none; animation: fadeIn 0.4s ease; }
+        .tab-panel.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 내부 스타일 */
+        h2 { color: var(--primary); font-size: 1.3rem; margin: 0 0 20px 0; border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
+        .day-info { background: #f8fafc; border-radius: 12px; padding: 15px; margin-bottom: 15px; border-left: 5px solid var(--primary); }
+        .flight { color: #e11d48; font-weight: bold; font-size: 0.85rem; }
+        
         ul { list-style: none; padding: 0; margin: 0; }
-        ul li { position: relative; padding-left: 28px; margin-bottom: 15px; font-size: 1.05rem; font-weight: 400; color: #444; }
-        ul li::before { content: '◈'; position: absolute; left: 0; color: var(--gold); font-weight: 900; }
+        ul li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 0.95rem; word-break: keep-all; line-height: 1.5; }
+        ul li::before { content: '🌸'; position: absolute; left: 0; }
 
-        /* 안내 사항 그리드 */
-        .notice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .notice-item { background: #f9fbff; padding: 25px; border-radius: 18px; border: 1px solid #eef2f8; transition: transform 0.3s; }
-        .notice-item:hover { transform: translateY(-5px); }
-        .notice-item h4 { color: var(--primary); margin: 0 0 12px 0; font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-        
-        .yt-btn { 
-            display: flex; align-items: center; justify-content: center; background: #ff0000; color: white !important; 
-            padding: 14px; border-radius: 12px; text-decoration: none !important; font-weight: 800; margin-top: 15px; font-size: 0.95rem; box-shadow: 0 5px 15px rgba(255,0,0,0.2);
-        }
-
-        .footer { text-align: center; padding: 60px 20px; background: var(--dark); color: rgba(255,255,255,0.5); font-size: 0.85rem; letter-spacing: 1px; }
-
-        /* 모바일 미세 조정 */
-        @media (max-width: 600px) {
-            .card { padding: 35px 20px; }
-            h2 { font-size: 1.4rem; }
-            .day-overlay { padding: 20px 15px; margin: 10px; }
-            ul li { font-size: 0.95rem; }
-        }
+        .yt-btn { display: block; background: #ff0000; color: white !important; text-align: center; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; margin-top: 15px; }
     </style>
 </head>
 <body>
 
-<header>
-    <p>2026 J-US RECRUITING CAMPAIGN</p>
-    <h1>SAPPORO</h1>
-    <p>MAY 13 — MAY 16, 2026</p>
-</header>
-
-<div class="container">
-    <div class="card">
-        <h2>CAMPAIGN OVERVIEW</h2>
-        <div style="font-size: 1.05rem; color: #555;">
-            <p><strong>• MEETING:</strong> 05/13(WED) 07:30 인천공항 제2터미널(T2) 3층</p>
-            <p><strong>• AIRLINE:</strong> 대한항공 (KOREAN AIR) 직항편 이용</p>
-            <p><strong>• STAY:</strong> 노보리베츠 마호로바 & 삿포로 머큐어 호텔</p>
-        </div>
+<div class="main-wrapper">
+    <div class="top-header">
+        <p>J-US RECRUITING CAMPAIGN</p>
+        <h1>SAPPORO 2026</h1>
     </div>
 
-    <div class="card">
-        <h2>DETAILED SCHEDULE</h2>
+    <div class="tab-nav">
+        <button class="tab-link active" onclick="showTab('info')">안내사항</button>
+        <button class="tab-link" onclick="showTab('day1')">1일차</button>
+        <button class="tab-link" onclick="showTab('day2')">2일차</button>
+        <button class="tab-link" onclick="showTab('day3')">3일차</button>
+        <button class="tab-link" onclick="showTab('day4')">4일차</button>
+    </div>
+
+    <div class="content-card">
         
-        <div class="day-box day1">
-            <div class="day-overlay">
-                <div class="day-header">
-                    <span class="day-title">DAY 01 | 2026. 05. 13 (WED)</span>
-                    <span class="flight-tag">🛫 KE 765 (10:35 ICN - 13:25 CTS)</span>
-                </div>
-                <ul>
-                    <li><strong>07:30 인천공항 제2터미널(T2) 집결</strong> 및 인원 점검</li>
-                    <li>대한항공 수속 후 삿포로 향발</li>
-                    <li>신치토세 공항 도착 후 노보리베츠 이동</li>
-                    <li><strong>지옥계곡</strong> 관광 및 호텔 가이세키 석식</li>
-                </ul>
+        <div id="info" class="tab-panel active">
+            <h2>TRAVEL INFO</h2>
+            <div class="day-info">
+                <strong>• 일시:</strong> 05/13(수) ~ 05/16(토)<br>
+                <strong>• 미팅:</strong> 07:30 인천공항 T2 3층
             </div>
+            <ul>
+                <li>여권 유효기간 6개월 이상 필수 확인</li>
+                <li>110V 어댑터(돼지코) 준비 필수</li>
+                <li>비짓 재팬 웹 사전 등록 권장</li>
+            </ul>
+            <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-btn">입국 가이드 영상보기</a>
         </div>
 
-        <div class="day-box day4">
-            <div class="day-overlay">
-                <div class="day-header">
-                    <span class="day-title">DAY 04 | 2026. 05. 16 (SAT)</span>
-                    <span class="flight-tag">🛬 KE 766 (14:50 CTS - 17:55 ICN)</span>
-                </div>
-                <ul>
-                    <li>호텔 조식 후 체크아웃 (**11:00**)</li>
-                    <li>면세점 자유 쇼핑 및 공항 이동</li>
-                    <li>인천공항 제2터미널 도착 및 캠페인 종료</li>
-                </ul>
+        <div id="day1" class="tab-panel">
+            <h2>DAY 01 | 05. 13</h2>
+            <div class="day-info">
+                <span class="flight">🛫 KE 765 (10:35 - 13:25)</span>
             </div>
+            <ul>
+                <li>인천공항 제2터미널 집결 및 수속</li>
+                <li>대한항공 탑승 및 삿포로 향발</li>
+                <li>노보리베츠 지옥계곡 관광</li>
+                <li>호텔 석식(가이세키) 및 휴식</li>
+            </ul>
         </div>
-    </div>
 
-    <div class="card">
-        <h2>TRAVEL GUIDE</h2>
-        <div class="notice-grid">
-            <div class="notice-item">
-                <h4>🛂 여권 및 입국 수속</h4>
-                <p>• 여권 유효기간 6개월 이상 필수 확인</p>
-                <p>• <strong>Visit Japan Web</strong> 온라인 사전 등록 필수</p>
-                <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-btn">입국 등록 가이드 영상</a>
+        <div id="day4" class="tab-panel">
+            <h2>DAY 04 | 05. 16</h2>
+            <div class="day-info">
+                <span class="flight">🛬 KE 766 (14:50 - 17:55)</span>
             </div>
-            <div class="notice-item">
-                <h4>💼 수하물 및 필수품</h4>
-                <p>• 위탁 수하물 1인 15kg (1개) 규정</p>
-                <p>• 전압 110V 전용 (돼지코 어댑터 지참)</p>
-                <p>• 보조배터리 및 라이터는 반드시 기내 휴대</p>
-            </div>
-            <div class="notice-item">
-                <h4>🧥 날씨 및 환전</h4>
-                <p>• 최저 3도 ~ 최고 14도 (겨울/간절기 복장)</p>
-                <p>• 엔화 현금 환전 권장 (신용카드 불가 매장 대비)</p>
-                <p>• 시차 정보: 한국과 시차 없음 (동일 시간)</p>
-            </div>
+            <ul>
+                <li>호텔 조식 후 체크아웃 (11:00)</li>
+                <li>면세점 자유 쇼핑 및 공항 이동</li>
+                <li>인천공항 제2터미널 도착 및 해산</li>
+            </ul>
         </div>
-    </div>
+
+        </div>
 </div>
 
-<div class="footer">
-    © 2026 J-US RECRUITING CAMPAIGN. ALL RIGHTS RESERVED.
-</div>
+<script>
+    function showTab(tabId) {
+        // 모든 패널 숨기기
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+        // 모든 탭 스타일 초기화
+        document.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
+        
+        // 선택한 패널 보이기
+        document.getElementById(tabId).classList.add('active');
+        // 선택한 탭 활성화
+        event.currentTarget.classList.add('active');
+    }
+</script>
 
 </body>
 </html>
