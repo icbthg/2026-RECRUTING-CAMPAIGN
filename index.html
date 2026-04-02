@@ -50,11 +50,9 @@
         ul li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 0.93rem; line-height: 1.6; color: #444; word-break: keep-all; }
         ul li::before { content: '🌸'; position: absolute; left: 0; }
 
-        /* 공통 정보 테이블 스타일 */
         .info-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.85rem; border-radius: 10px; overflow: hidden; border: 1px solid #eee; }
         .info-table th { background: #f0f2f8; color: var(--primary); padding: 10px; text-align: left; width: 35%; border-bottom: 1px solid #eee; }
-        .info-table td { background: #fff; padding: 10px; border-bottom: 1px solid #eee; color: #333; font-weight: 500; }
-        .info-table td strong { color: #d32f2f; }
+        .info-table td { background: #fff; padding: 10px; border-bottom: 1px solid #eee; color: #333; font-weight: 700; }
 
         .weather-card { background: var(--light-blue); border-radius: 15px; padding: 15px; margin-bottom: 20px; border: 1px solid #d0e0ff; }
         .weather-info { display: flex; justify-content: space-around; align-items: center; margin-top: 10px; }
@@ -66,7 +64,6 @@
         .yt-btn { display: block; background: #ff0000; color: white !important; text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; margin-top: 10px; font-size: 0.9rem; }
         .web-btn { display: block; background: #007bff; color: white !important; text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; margin-top: 5px; font-size: 0.9rem; }
         
-        /* 로밍/체크리스트용 강조 박스 */
         .highlight-box { background: #fff9e6; border: 1px solid #ffeeba; border-radius: 12px; padding: 15px; margin: 15px 0; }
         .highlight-box h4 { margin: 0 0 10px 0; font-size: 0.95rem; color: #856404; }
 
@@ -120,16 +117,10 @@
                 <ul>
                     <li><strong>여권:</strong> 유효기간 6개월 이상 필수</li>
                     <li><strong>전압:</strong> 일본은 110V (돼지코 어댑터 필요)</li>
-                    <li><strong>환전:</strong> 엔화(JPY) 준비 (카드 결제도 가능)</li>
+                    <li><strong>환전:</strong> 엔화(JPY) 준비 (카드 결제 안되는 곳 있음)</li>
                     <li><strong>상비약:</strong> 소화제, 감기약, 개인 복용 약</li>
                     <li><strong>세면도구:</strong> 면도기 등 개인 용품</li>
                 </ul>
-
-                <h3>📶 인터넷 및 로밍</h3>
-                <div class="highlight-box">
-                    <h4>인터넷 사용 안내</h4>
-                    <p style="font-size: 0.88rem; color: #444; margin: 0;">포켓 와이파이, 유심(USIM), 또는 이동통신사 로밍 서비스를 미리 신청해 주세요. (호텔 내 무료 와이파이 가능)</p>
-                </div>
 
                 <h3>🧴 일본 입국 면세 한도</h3>
                 <table class="info-table">
@@ -152,6 +143,7 @@
                     <tr><th>호텔 전화</th><td>8557976733</td></tr>
                 </table>
                 <a href="https://vjw-lp.digital.go.jp/ko/" target="_blank" class="web-btn">공식 비짓재팬웹 바로가기</a>
+                <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-btn">비짓재팬 등록 방법 영상</a>
                 
                 <h3>🚨 긴급 연락처</h3>
                 <div style="background: #fdf2f2; border: 1px solid #f5c6cb; border-radius: 12px; padding: 15px; text-align: center; color: #721c24; font-size: 0.9rem; font-weight: bold;">
@@ -161,19 +153,46 @@
 
             <div id="day1" class="tab-panel">
                 <h3>제1일차 5월 13일 수요일</h3>
-                <ul><li>07:30 인천공항 제2터미널 미팅</li><li>10:35 KE 765편 인천 출발</li><li>13:25 삿포로 공항 도착 후 노보리베츠 이동</li><li>마호로바 호텔 체크인 및 석식 후 온천 휴식</li></ul>
+                <ul>
+                    <li>07:30 인천공항 제2터미널 미팅</li>
+                    <li>10:35 대한항공 KE 765편 인천 출발</li>
+                    <li>13:25 삿포로 공항 도착</li>
+                    <li>삿포로 출발 (북해도 대표 온천 마을 노보리베츠 이동)</li>
+                    <li>마호로바(Mahoroba) 온천 호텔 Check-in</li>
+                    <li>석식(호텔식) 후 온천 휴식</li>
+                </ul>
             </div>
             <div id="day2" class="tab-panel">
                 <h3>제2일차 5월 14일 목요일</h3>
-                <ul><li>다테 지다이무라 시대촌 관람</li><li>시로이고히비토 테마파크 관광</li><li>삿포로 머큐어 호텔 체크인</li><li style="color:var(--primary); font-weight:bold;">'겨울 왕국이 녹아내린 자리에 초록빛 생명력이 피어나는 도시' 삿포로 자유시간</li></ul>
+                <ul>
+                    <li>09:00 호텔 Check-out</li>
+                    <li>삿포로의 민속촌인 <strong>다테 지다이무라 시대촌</strong> 관람</li>
+                    <li>현지식 중식</li>
+                    <li>시대촌 출발 / 삿포로 향발</li>
+                    <li>북해도를 대표하는 과자인 <strong>시로이고히비토 테마파크</strong> 관람</li>
+                    <li>삿포로 머큐어 호텔로 이동 / Check-in</li>
+                    <li style="color:var(--primary); font-weight:bold;">'겨울 왕국이 녹아내린 자리에 초록빛 생명력이 피어나는 도시' 삿포로 자유시간</li>
+                </ul>
             </div>
             <div id="day3" class="tab-panel">
                 <h3>제3일차 5월 15일 금요일</h3>
-                <ul><li>영화 <strong>'Love Letter'</strong>의 도시 오타루 관광</li><li>운하 및 오르골당 관광</li><li>삿포로 맥주 박물관 견학 및 오오도리 공원 차창 관광</li><li>석식: <strong>난다(NANDA) 해산물 뷔페</strong> 만찬</li></ul>
+                <ul>
+                    <li>10:00 호텔 출발</li>
+                    <li>영화 <strong>'Love Letter'</strong>의 도시 오타루 관광</li>
+                    <li>운치있는 운하와 오타루 대표 오르골당 관광</li>
+                    <li>현지식 중식 후 삿포로 이동</li>
+                    <li>삿포로 맥주 박물관 견학 (시음료 불포함)</li>
+                    <li>오오도리 공원 차창 관광</li>
+                    <li>석식: <strong>난다(NANDA) 해산물 뷔페</strong> 만찬</li>
+                </ul>
             </div>
             <div id="day4" class="tab-panel">
                 <h3>제4일차 5월 16일 토요일</h3>
-                <ul><li>11:00 체크아웃 후 공항 이동</li><li>14:50 KE 766편 삿포로 출발</li><li>17:55 인천 공항 도착 및 해산</li></ul>
+                <ul>
+                    <li>호텔 조식 후 11:00 체크아웃 후 공항 이동</li>
+                    <li>14:50 대한항공 KE 766편 삿포로 출발</li>
+                    <li>17:55 인천 공항 도착 및 해산</li>
+                </ul>
             </div>
         </div>
         <div class="footer">© 2026 J-US Recruiting Campaign.</div>
