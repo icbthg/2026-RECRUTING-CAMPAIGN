@@ -2,211 +2,106 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2026 J-US Recruiting Campaign</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 제이어스 리쿠르팅 캠페인 - 삿포로</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #004a99; --gold: #d4af37; --bg: #f4f7f9; }
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        :root { --primary: #004a99; --accent: #e11d48; --bg-light: #f8fafc; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; background: var(--bg-light); line-height: 1.8; color: #333; }
         
-        body, html { 
-            margin: 0; padding: 0; min-height: 100vh;
-            font-family: 'Noto Sans KR', sans-serif;
-            background: #f4f7f9; overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .main-wrapper { width: 100%; display: block; }
-
-        /* 상단 헤더 */
-        .top-header { 
-            height: 50vh; min-height: 350px; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center; color: white;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('1st photo.jpg');
-            background-size: cover; background-position: center;
-            border-radius: 0 0 40px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            padding: 20px; position: relative;
-        }
-        .top-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 8vw, 3.5rem); margin: 10px 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.7); font-weight: 900; }
-        .welcome-msg { position: absolute; left: 20px; bottom: 70px; font-size: 1.1rem; font-weight: 700; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
-
-        .container-body { margin-top: -50px; padding: 0 15px 120px; position: relative; z-index: 10; }
-
-        /* 고정 개요 카드 */
-        .fixed-card {
-            background: #ffffff; border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 25px 15px;
-            margin-bottom: 20px; border: 1px solid #eee;
-        }
-        h2 { color: var(--primary); font-size: 1.3rem; margin: 0 0 15px 0; border-left: 5px solid var(--gold); padding-left: 12px; }
-        .fixed-info { background: #f8f9fa; border-radius: 15px; padding: 15px 10px; }
-        .fixed-info p { margin: 10px 0; font-size: 0.88rem; color: #222; display: flex; flex-direction: column; }
-        .fixed-info p strong { color: var(--primary); margin-bottom: 2px; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; display: flex; justify-content: center; padding: 15px 0; }
+        nav a { text-decoration: none; color: var(--primary); font-weight: bold; margin: 0 20px; }
         
-        /* 🆕 미팅 안내 문구 스타일: 윗글씨와 동일하게 변경 */
-        .meeting-note { font-size: 0.88rem; color: #222; margin-top: 2px; }
-
-        /* 탭 카드 영역 */
-        .tab-card {
-            background: #ffffff; border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15); padding: 25px 15px;
+        /* 메인 헤더: 사진을 더 선명하게 (0.2, 0.3으로 낮춤) */
+        header { 
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url('1st photo.jpg.jpg');
+            background-size: cover; background-position: center; color: white; padding: 180px 20px 140px; text-align: center; 
         }
-
-        .tab-nav-container { display: flex; flex-direction: column; gap: 8px; margin-bottom: 25px; }
+        header h1 { margin: 0; font-size: 3.2em; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); font-weight: 700; }
         
-        .btn-info-wide {
-            width: 100%; padding: 18px; border-radius: 15px;
-            border: 2px solid #eee; background: #f9f9f9; color: #666;
-            font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s;
+        .container { max-width: 900px; margin: -60px auto 80px; padding: 0 20px; }
+        .section { background: white; padding: 45px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 50px; }
+        h2 { border-bottom: 4px solid var(--primary); padding-bottom: 12px; color: var(--primary); font-size: 2em; margin-bottom: 35px; }
+
+        .day-box { 
+            position: relative; background-size: cover; background-position: center; 
+            border-radius: 20px; margin-bottom: 30px; padding: 40px !important; 
+            overflow: hidden; border: 1px solid #eee;
         }
-        .btn-info-wide.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,74,153,0.3); }
 
-        .tab-days-row { display: flex; gap: 6px; }
-        .tab-btn-day {
-            flex: 1; padding: 15px 5px; border-radius: 12px;
-            border: 2px solid #eee; background: #f9f9f9; color: #666;
-            font-weight: bold; font-size: 0.9rem; cursor: pointer;
+        /* ⭐ 선명도 조절: 0.9에서 0.7로 낮춰서 사진이 훨씬 잘 보이게 했습니다 */
+        .day-box::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.7); 
+            z-index: 1;
         }
-        .tab-btn-day.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .day-header, ul { position: relative; z-index: 2; }
 
-        .tab-panel { display: none; }
-        .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        /* 파일명 뒤에 .jpg.jpg가 붙은 형의 현재 상태를 그대로 반영했습니다 */
+        .day1 { background-image: url('day1_bg.jpg.jpg'); }
+        .day2 { background-image: url('day2_bg.jpg.jpg'); }
+        .day3 { background-image: url('day3_bg.jpg.jpg'); }
+        .day4 { background-image: url('day4_bg.jpg.jpg'); }
 
-        h3 { color: var(--primary); font-size: 1.1rem; margin-top: 0; margin-bottom: 15px; }
-        ul { list-style: none; padding: 0; margin: 0; }
-        ul li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 0.93rem; word-break: keep-all; line-height: 1.6; color: #444; }
+        .day-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .day-num { background: var(--primary); color: white; padding: 6px 18px; border-radius: 25px; font-weight: bold; font-size: 1.1em; }
+        .flight-tag { color: var(--accent); font-weight: bold; border: 2px solid var(--accent); padding: 4px 12px; border-radius: 6px; background: white; }
+        
+        ul { list-style: none; padding: 0; }
+        ul li { position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1.1em; font-weight: 500; }
         ul li::before { content: '🌸'; position: absolute; left: 0; }
-
-        .map-img {
-            width: 100%; border-radius: 15px; margin: 15px 0;
-            border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: block;
-        }
-
-        .yt-btn { display: block; background: #ff0000; color: white !important; text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; margin-top: 25px; font-size: 0.9rem; }
-        .footer { text-align: center; padding: 40px 20px; color: #bbb; font-size: 0.75rem; }
+        
+        .footer { text-align: center; padding: 50px; color: #888; }
     </style>
 </head>
 <body>
 
-<div class="main-wrapper">
-    <header class="top-header">
-        <p>2026 J-US RECRUITING CAMPAIGN</p>
-        <h1>SAPPORO</h1>
-        <div class="welcome-msg">제이어스 사업단 여러분 환영합니다</div>
-    </header>
+<nav>
+    <a href="#overview">행사개요</a>
+    <a href="#schedule">상세일정</a>
+    <a href="#notice">안내사항</a>
+</nav>
 
-    <div class="container-body">
-        <div class="fixed-card">
-            <h2>여행 개요</h2>
-            <div class="fixed-info">
-                <p><span><strong>• 일시:</strong> 2026년 05월 13일(수) ~ 16일(토)</span></p>
-                <p><span><strong>• 항공:</strong> 대한항공 KE 765 / KE 766</span></p>
-                <p><span><strong>• 숙소:</strong> 마호로바(1박) / 머큐어 삿포로(2박)</span></p>
-                <p>
-                    <span><strong>• 미팅:</strong> 05.13(수) 07:30 인천공항 T2</span>
-                    <span class="meeting-note">(여행 안내 탭 내 약도 참고)</span>
-                </p>
-            </div>
+<header>
+    <h1>2026 RECRUITING CAMPAIGN</h1>
+    <p>5월의 삿포로, 벚꽃과 함께하는 특별한 여정</p>
+    <p><strong>2026. 05. 13(수) ~ 05. 16(토)</strong></p>
+</header>
+
+<div class="container">
+    <div class="section" id="overview">
+        <h2>✈️ 행사 개요</h2>
+        <p><strong>• 미팅:</strong> 05/13(수) 07:30 인천공항 제2터미널</p>
+        <p><strong>• 숙소:</strong> 노보리베츠 마호로바(1박), 삿포로 머큐어 호텔(2박)</p>
+    </div>
+
+    <div class="section" id="schedule">
+        <h2>📅 상세 일정 안내</h2>
+        <div class="day-box day1">
+            <div class="day-header"><span class="day-num">Day 1</span><span class="flight-tag">🛫 KE 765</span></div>
+            <ul><li>07:30 인천공항 제2터미널 집결</li><li>노보리베츠 지옥계곡 관광</li></ul>
         </div>
-
-        <div class="tab-card">
-            <div class="tab-nav-container">
-                <button id="infoBtn" class="btn-info-wide active" onclick="showTab(event, 'info')">여행 안내 (상세 정보 및 약도)</button>
-                <div class="tab-days-row">
-                    <button class="tab-btn-day" onclick="showTab(event, 'day1')">1일차</button>
-                    <button class="tab-btn-day" onclick="showTab(event, 'day2')">2일차</button>
-                    <button class="tab-btn-day" onclick="showTab(event, 'day3')">3일차</button>
-                    <button class="tab-btn-day" onclick="showTab(event, 'day4')">4일차</button>
-                </div>
-            </div>
-
-            <div id="info" class="tab-panel active">
-                <h3>상세 여행 안내</h3>
-                <ul>
-                    <li>인천공항 제2터미널(T2) 3층 출국장 N카운터 미팅</li>
-                </ul>
-                <img src="map.jpg" alt="미팅 장소 약도" class="map-img">
-                <ul>
-                    <li>여권 유효기간 6개월 이상 필수 확인</li>
-                    <li>비짓재팬웹(VJW) 출발 전 등록 필수</li>
-                    <li>현지 날씨(3~14도) 대비 겉옷 준비</li>
-                    <li>110V 전용 어댑터(돼지코) 지참</li>
-                </ul>
-                <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-btn">비짓재팬웹 등록 가이드 영상</a>
-            </div>
-
-            <div id="day1" class="tab-panel">
-                <h3>1일차 상세 일정</h3>
-                <ul>
-                    <li>07:30 인천공항 제2터미널 미팅</li>
-                    <li>10:35 대한항공 KE 765편 인천 출발</li>
-                    <li>13:25 삿포로 공항 도착</li>
-                    <li>삿포로 출발 (북해도 대표 온천 마을 노보리베츠 이동)</li>
-                    <li>마호로바(Mahoroba) 온천 호텔 Check-in</li>
-                    <li>석식(호텔식) 후 온천 휴식</li>
-                </ul>
-            </div>
-
-            <div id="day2" class="tab-panel">
-                <h3>2일차 상세 일정</h3>
-                <ul>
-                    <li>09:00 호텔 Check-out</li>
-                    <li>다테 지다이무라 시대촌 관람</li>
-                    <li>현지식 중식</li>
-                    <li>시대촌 출발 / 삿포로 향발</li>
-                    <li>시로이고히비토 테마파크 관람</li>
-                    <li>삿포로 머큐어 호텔로 이동 / Check-in</li>
-                    <li style="color: #004a99; font-weight: bold;">삿포로에서 자유시간</li>
-                </ul>
-            </div>
-
-            <div id="day3" class="tab-panel">
-                <h3>3일차 상세 일정</h3>
-                <ul>
-                    <li>10:00 호텔 출발</li>
-                    <li>영화 'Love Story'의 도시 오타루 관광</li>
-                    <li>운치있는 운하와 오타루 대표 오르골당 관광</li>
-                    <li>현지식 중식 후 삿포로 이동</li>
-                    <li>삿포로 맥주 박물관 견학 (시음료 불포함)</li>
-                    <li>오오도리 공원 차창 관광</li>
-                    <li>석식: 난다(NANDA) 해산물 뷔페 만찬</li>
-                </ul>
-            </div>
-
-            <div id="day4" class="tab-panel">
-                <h3>4일차 상세 일정</h3>
-                <ul>
-                    <li>호텔 조식 후 11:00 호텔 Check-out</li>
-                    <li>공항으로 이동</li>
-                    <li>14:50 대한항공 KE 766편 삿포로 출발</li>
-                    <li>17:55 인천 공항 도착 및 해산</li>
-                </ul>
-            </div>
-
-            <div class="footer">© 2026 J-US Recruiting Campaign.</div>
+        <div class="day-box day2">
+            <div class="day-header"><span class="day-num">Day 2</span></div>
+            <ul><li>다테 지다이무라(시대촌) 체험</li><li>시로이코이비토 박물관 견학</li></ul>
+        </div>
+        <div class="day-box day3">
+            <div class="day-header"><span class="day-num">Day 3</span></div>
+            <ul><li>오타루 운하 및 오르골당 관광</li><li>석식: 난다(NANDA) 해산물 뷔페</li></ul>
+        </div>
+        <div class="day-box day4">
+            <div class="day-header"><span class="day-num">Day 4</span><span class="flight-tag">🛬 KE 766</span></div>
+            <ul><li>11:00 호텔 체크아웃 및 귀국</li></ul>
         </div>
     </div>
-</div>
 
-<script>
-    function showTab(evt, tabId) {
-        var i, tabpanel, allBtns;
-        tabpanel = document.getElementsByClassName("tab-panel");
-        for (i = 0; i < tabpanel.length; i++) {
-            tabpanel[i].style.display = "none";
-            tabpanel[i].classList.remove("active");
-        }
-        allBtns = document.querySelectorAll('.btn-info-wide, .tab-btn-day');
-        for (i = 0; i < allBtns.length; i++) {
-            allBtns[i].classList.remove("active");
-        }
-        var activePanel = document.getElementById(tabId);
-        activePanel.style.display = "block";
-        setTimeout(function(){ activePanel.classList.add("active"); }, 10);
-        evt.currentTarget.classList.add("active");
-    }
-</script>
+    <div class="section" id="notice">
+        <h2>💡 안내 사항</h2>
+        <p>• 5월 삿포로는 선선하니 가벼운 외투를 꼭 챙기세요.</p>
+    </div>
+    <div class="footer">© 2026 J-US Recruiting Campaign.</div>
+</div>
 
 </body>
 </html>
