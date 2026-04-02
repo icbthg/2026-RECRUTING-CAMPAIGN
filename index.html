@@ -27,7 +27,6 @@
         .top-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.2rem, 8vw, 3.5rem); margin: 5px 0; font-weight: 900; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
         .welcome-msg { font-size: 1.1rem; font-weight: 700; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); margin-top: 5px; }
 
-        /* 상단 반투명 실시간 탭 */
         .glass-tab-container {
             margin-top: 25px; display: flex; gap: 10px; padding: 10px;
             background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -43,7 +42,6 @@
         .glass-btn:active { background: var(--primary); transform: scale(0.95); }
 
         .container-body { margin-top: -40px; padding: 0 15px 100px; position: relative; z-index: 10; }
-
         .fixed-card { background: #ffffff; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 25px 15px; margin-bottom: 20px; }
         h2 { color: var(--primary); font-size: 1.3rem; margin: 0 0 15px 0; border-left: 5px solid var(--gold); padding-left: 12px; }
         .fixed-info { background: #f8f9fa; border-radius: 15px; padding: 15px 10px; }
@@ -72,8 +70,10 @@
         .info-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.85rem; border: 1px solid #eee; }
         .info-table th { background: #f0f2f8; color: var(--primary); padding: 10px; text-align: left; width: 35%; border-bottom: 1px solid #eee; }
         .info-table td { background: #fff; padding: 10px; border-bottom: 1px solid #eee; color: #333; font-weight: 700; }
+        
         .web-btn { display: block; background: #007bff; color: white !important; text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; margin-top: 5px; font-size: 0.9rem; }
         .yt-btn { display: block; background: #ff0000; color: white !important; text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; margin-top: 10px; font-size: 0.9rem; }
+        
         .footer { text-align: center; padding: 40px 20px; color: #bbb; font-size: 0.75rem; }
     </style>
 </head>
@@ -84,14 +84,9 @@
         <p style="font-size:0.8rem; letter-spacing:2px; margin-bottom:0;">2026 J-US RECRUITING CAMPAIGN</p>
         <h1>SAPPORO</h1>
         <div class="welcome-msg">제이어스 사업단 여러분 환영합니다</div>
-
         <div class="glass-tab-container">
-            <a href="https://search.naver.com/search.naver?query=%EC%97%94%ED%99%98+%ED%99%98%EC%9C%A8" target="_blank" class="glass-btn">
-                <span>💱</span> 실시간 환율
-            </a>
-            <a href="https://www.google.com/search?query=sapporo+weather" target="_blank" class="glass-btn">
-                <span>🌤️</span> 삿포로 날씨
-            </a>
+            <a href="https://search.naver.com/search.naver?query=%EC%97%94%ED%99%98+%ED%99%98%EC%9C%A8" target="_blank" class="glass-btn">💱 실시간 환율</a>
+            <a href="https://www.google.com/search?query=sapporo+weather" target="_blank" class="glass-btn">🌤️ 삿포로 날씨</a>
         </div>
     </header>
 
@@ -129,6 +124,7 @@
                 <h3>🗺️ 공항 미팅 안내</h3>
                 <ul><li>인천공항 T2 3층 출국장 <strong>E ZONE</strong></li><li style="color:var(--primary); font-weight:bold;">05/13(수) 오전 07:30 미팅</li></ul>
                 <img src="Map.jpg" alt="미팅 약도" class="map-img">
+                
                 <h3>📝 비짓재팬웹(VJW) 정보</h3>
                 <table class="info-table">
                     <tr><th>도착 예정일</th><td>2026. 05. 13</td></tr>
@@ -137,6 +133,7 @@
                     <tr><th>호텔명</th><td>HOTEL MAHOROBA</td></tr>
                 </table>
                 <a href="https://vjw-lp.digital.go.jp/ko/" target="_blank" class="web-btn">공식 비짓재팬웹 바로가기</a>
+                <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-btn">비짓재팬 등록 방법 영상</a>
             </div>
 
             <div id="day1" class="tab-panel">
@@ -145,9 +142,8 @@
                     <li>07:30 인천공항 제2터미널 미팅</li>
                     <li>10:35 대한항공 KE 765편 인천 출발</li>
                     <li>13:25 삿포로 공항 도착</li>
-                    <li>삿포로 출발 (북해도 대표 온천 마을 노보리베츠 이동)</li>
-                    <li>마호로바(Mahoroba) 온천 호텔 Check-in</li>
-                    <li>석식(호텔식) 후 온천 휴식</li>
+                    <li>삿포로 출발 (노보리베츠 이동)</li>
+                    <li>마호로바(Mahoroba) 온천 호텔 Check-in 및 석식 후 휴식</li>
                 </ul>
             </div>
             <div id="day2" class="tab-panel">
@@ -155,11 +151,7 @@
                 <ul>
                     <li>09:00 호텔 Check-out</li>
                     <li><strong>다테 지다이무라 시대촌</strong> 관람</li>
-                    <li><strong>시로이고히비토 테마파크</strong> 관광
-                    
-                        <br><span style="font-size: 0.82rem; color: #666; font-weight: 400; padding-left: 5px;">- 북해도의 명물 '시로이고히비토' 과자의 제작 공정 견학 및 영국식 정원을 만끽하는 테마파크</span>
-                    </li>
-                    <li>머큐어 삿포로 호텔 Check-in</li>
+                    <li><strong>시로이고히비토 테마파크</strong> 관람</li>
                     <li style="color:var(--primary); font-weight:bold;">'겨울 왕국이 녹아내린 자리에 초록빛 생명력이 피어나는 도시' 삿포로 자유시간</li>
                 </ul>
             </div>
@@ -168,19 +160,12 @@
                 <ul>
                     <li>영화 <strong>'Love Letter'</strong>의 도시 오타루 관광</li>
                     <li>운치있는 운하와 오타루 대표 오르골당 관광</li>
-                    <li>현지식 중식 후 삿포로 이동</li>
-                    <li>삿포로 맥주 박물관 견학 (시음료 불포함)</li>
-                    <li>오오도리 공원 차창 관광</li>
-                    <li>석식: <strong>난다(NANDA) 해산물 뷔페</strong> 만찬</li>
+                    <li>삿포로 맥주 박물관 견학 및 석식: <strong>난다(NANDA) 해산물 뷔페</strong></li>
                 </ul>
             </div>
             <div id="day4" class="tab-panel">
                 <h3>제4일차 5월 16일 토요일</h3>
-                <ul>
-                    <li>호텔 조식 후 11:00 체크아웃, 공항 이동</li>
-                    <li>14:50 대한항공 KE 766편 삿포로 출발</li>
-                    <li>17:55 인천 공항 도착 및 해산</li>
-                </ul>
+                <ul><li>11:00 체크아웃 후 공항 이동</li><li>14:50 KE 766편 삿포로 출발</li><li>17:55 인천 공항 도착 및 해산</li></ul>
             </div>
         </div>
         <div class="footer">© 2026 J-US Recruiting Campaign.</div>
@@ -198,7 +183,6 @@
         activePanel.style.display = "block";
         setTimeout(function(){ activePanel.classList.add("active"); }, 10);
         evt.currentTarget.classList.add("active");
-        window.scrollTo({ top: document.querySelector('.tab-menu-section').offsetTop - 20, behavior: 'smooth' });
     }
 </script>
 </body>
