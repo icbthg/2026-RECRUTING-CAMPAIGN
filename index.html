@@ -54,7 +54,9 @@
         .tab-btn-day.active { background: var(--primary); color: #ffffff !important; border-color: var(--primary); }
 
         .content-display-box { background: #ffffff; border-radius: 30px; min-height: 200px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); padding: 25px 15px; }
-        #placeholder-msg { text-align: center; color: #444; padding: 60px 0; font-size: 1rem; font-weight: 700; line-height: 1.5; }
+        
+        /* ✅ [수정] 대표님 요청: 가로는 유지, 세로만 1/3로 축소 (기존 60px -> 20px) */
+        #placeholder-msg { text-align: center; color: #444; padding: 20px 0; font-size: 1rem; font-weight: 700; line-height: 1.5; }
 
         .tab-panel { display: none; animation: fadeIn 0.3s ease; }
         .tab-panel.active { display: block; }
@@ -101,6 +103,9 @@
 
         <div class="tab-menu-section">
             <button class="btn-info-wide" onclick="showTab(event, 'info')">여행 안내 (준비물/비짓재팬/면세)</button>
+            
+            <button class="btn-info-wide" onclick="showTab(event, 'onsen')">♨️ 온천 사용 안내 (유카타 착용법)</button>
+
             <div class="tab-days-row">
                 <button class="tab-btn-day" onclick="showTab(event, 'day1')">제1일차<br>5/13</button>
                 <button class="tab-btn-day" onclick="showTab(event, 'day2')">제2일차<br>5/14</button>
@@ -120,6 +125,14 @@
                     <li><strong>환전:</strong> 엔화(JPY) 준비 (카드 결제 안되는 곳 있음)</li>
                 </ul>
 
+                <h3>🧴 일본 입국 면세 한도</h3>
+                <table class="info-table">
+                    <tr><th>주류 (술)</th><td>3병 (1병당 750ml 이하)</td></tr>
+                    <tr><th>담배</th><td>궐련 200개비 (1보루)</td></tr>
+                    <tr><th>향수</th><td>2온스 (약 56ml)</td></tr>
+                    <tr><th>기타 물품</th><td>합계 20만 엔 이하</td></tr>
+                </table>
+
                 <h3>🗺️ 공항 미팅 안내</h3>
                 <ul>
                     <li>인천공항 T2 3층 출국장 <strong>E ZONE</strong></li>
@@ -137,6 +150,26 @@
                 </table>
                 <a href="https://vjw-lp.digital.go.jp/ko/" target="_blank" class="web-btn">공식 비짓재팬웹 바로가기</a>
                 <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-btn">비짓재팬 등록 방법 영상</a>
+            </div>
+
+            <div id="onsen" class="tab-panel">
+                <h3>♨️ 온천 입욕 에티켓</h3>
+                <ul>
+                    <li><strong>입욕 전 샤워:</strong> 탕에 들어가기 전 반드시 몸을 씻어주세요.</li>
+                    <li><strong>수건 사용:</strong> 탕 안에는 수건을 넣지 않습니다.</li>
+                    <li><strong>머리카락:</strong> 긴 머리는 묶어서 탕에 닿지 않게 해주세요.</li>
+                </ul>
+
+                <h3>👘 유카타 올바르게 입는 법</h3>
+                <ul>
+                    <li>1. 소매에 팔을 끼워 유카타를 걸칩니다.</li>
+                    <li>2. 오른쪽 자락을 먼저 몸에 붙입니다.</li>
+                    <li>3. <strong>왼쪽 자락을 그 위(오른쪽 위)로 겹칩니다.</strong><br><small>(*반대로 입으면 장례식 예복이 되니 주의하세요!)</small></li>
+                    <li>4. 허리띠(오비)를 배꼽 위치에서 뒤로 돌려 묶습니다.</li>
+                </ul>
+                <img src="Yukata.jpg" alt="유카타 입는 법 그림" class="map-img">
+                
+                <p style="font-size:0.85rem; color:#666; padding:10px; background:#f0f2f8; border-radius:10px; margin-top:15px;">※ 마호로바 호텔의 넓은 온천 시설에서 일상의 피로를 풀어보시기 바랍니다.</p>
             </div>
 
             <div id="day1" class="tab-panel">
@@ -207,9 +240,14 @@
     function showTab(evt, tabId) {
         document.getElementById('placeholder-msg').style.display = 'none';
         var panels = document.getElementsByClassName("tab-panel");
-        for (var i = 0; i < panels.length; i++) { panels[i].style.display = "none"; panels[i].classList.remove("active"); }
+        for (var i = 0; i < panels.length; i++) { 
+            panels[i].style.display = "none"; 
+            panels[i].classList.remove("active"); 
+        }
         var btns = document.querySelectorAll('.btn-info-wide, .tab-btn-day');
-        for (var i = 0; i < btns.length; i++) { btns[i].classList.remove("active"); }
+        for (var i = 0; i < btns.length; i++) { 
+            btns[i].classList.remove("active"); 
+        }
         var activePanel = document.getElementById(tabId);
         activePanel.style.display = "block";
         setTimeout(function(){ activePanel.classList.add("active"); }, 10);
