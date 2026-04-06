@@ -27,7 +27,6 @@
         .top-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.2rem, 8vw, 3.5rem); margin: 5px 0; font-weight: 900; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
         .welcome-msg { font-size: 1.1rem; font-weight: 700; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); margin-top: 5px; }
 
-        /* ✅ [유지] 실시간 정보 탭 */
         .glass-tab-container {
             margin-top: 25px; display: flex; gap: 10px; padding: 10px;
             background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -48,14 +47,12 @@
         .fixed-info p { margin: 10px 0; font-size: 0.88rem; color: #222; display: flex; flex-direction: column; line-height: 1.4; }
         .fixed-info p strong { color: var(--primary); margin-bottom: 2px; }
 
-        /* ✅ [유지] 블루 테두리(#27398C) */
         .btn-info-wide { width: 100%; padding: 18px; border-radius: 15px; border: 2px solid #27398C; background: #f9f9f9; color: #666; font-weight: bold; font-size: 1rem; cursor: pointer; margin-bottom: 8px; transition: 0.3s; }
         .btn-info-wide.active { background: var(--primary); color: #ffffff !important; border-color: var(--primary); }
         .tab-days-row { display: flex; gap: 5px; margin-bottom: 15px; }
         .tab-btn-day { flex: 1; padding: 12px 2px; border-radius: 12px; border: 2px solid #27398C; background: #f9f9f9; color: #666; font-weight: bold; font-size: 0.78rem; cursor: pointer; line-height: 1.3; transition: 0.3s; }
         .tab-btn-day.active { background: var(--primary); color: #ffffff !important; border-color: var(--primary); }
 
-        /* ✅ [유지] 슬림한 안내창 디자인 */
         .content-display-box { background: #ffffff; border-radius: 30px; min-height: 100px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); padding: 25px 15px; }
         #placeholder-msg { text-align: center; color: #444; padding: 20px 0; font-size: 1rem; font-weight: 700; line-height: 1.5; }
 
@@ -105,7 +102,6 @@
         <div class="tab-menu-section">
             <button class="btn-info-wide" onclick="showTab(event, 'info')">여행 안내 (수하물/비짓재팬/면세)</button>
             <button class="btn-info-wide" onclick="showTab(event, 'onsen')">♨️ 온천 사용 안내 (유카타 착용법)</button>
-            
             <button class="btn-info-wide" onclick="showTab(event, 'hotel')">🏨 호텔 상세 안내</button>
 
             <div class="tab-days-row">
@@ -155,6 +151,7 @@
                     <tr><th>호텔 전화</th><td>8557976733</td></tr>
                 </table>
                 <a href="https://vjw-lp.digital.go.jp/ko/" target="_blank" class="web-btn">공식 비짓재팬웹 바로가기</a>
+                <a href="http://www.youtube.com/watch?v=lmsCR7PQqNw" target="_blank" class="yt-btn">비짓재팬 등록 방법 영상</a>
             </div>
 
             <div id="onsen" class="tab-panel">
@@ -177,18 +174,19 @@
             <div id="hotel" class="tab-panel">
                 <h3>🏨 [노보리베츠] 호텔 마호로바</h3>
                 <ul>
-                    <li style="color:var(--primary); font-weight:bold;">노보리베츠에서 손꼽히는 대표적인 온천 호텔입니다.</li>
-                    <li>전통 있는 호텔이나 동남아 리조트에 비해서는 다소 세월의 흔적이 느껴져 낡아 보일 수 있으나, 그만큼 깊은 전통과 일본 최대 규모의 대욕장을 자랑합니다.</li>
+                    <li style="color:var(--primary); font-weight:bold;">1992년 개업, 노보리베츠의 명실상부한 NO.1 온천 호텔입니다.</li>
+                    <li>34년의 세월이 흐른 만큼 최신식 리조트에 비해 시설이 다소 낡아 보일 수 있으나, 이는 정통 온천 호텔만이 가진 깊은 전통과 역사의 흔적입니다.</li>
+                    <li style="color:#d44111; font-weight:bold;">마호로바가 최고인 이유: 노보리베츠 최대 규모의 대욕장(4가지 수질, 31개 욕탕)과 3대 게(킹크랩, 대게, 털게) 무제한 석식 뷔페를 즐길 수 있습니다.</li>
                 </ul>
-                <img src="Mahoroba.jpg" alt="마호로바 사진" class="map-img">
+                <img src="Mahoroba.jpg" alt="마호로바 호텔 사진" class="map-img">
 
                 <h3>🏨 [삿포로] 머큐어 삿포로</h3>
                 <ul>
-                    <li style="color:var(--primary); font-weight:bold;">삿포로 최대 번화가인 '스스키노' 중심이라는 압도적 입지!</li>
-                    <li>일본 도심 호텔치고는 객실 사이즈가 결코 작지 않아 여행 중 쾌적한 휴식이 가능합니다.</li>
-                    <li style="color:#d44111; font-weight:bold;">무엇보다 주변 맛집 투어와 쇼핑을 즐기기에 이보다 더 좋을 수 없는 최고의 위치가 가장 큰 장점입니다.</li>
+                    <li style="color:var(--primary); font-weight:bold;">삿포로 최대 번화가 '스스키노' 중심이라는 압도적 위치!</li>
+                    <li>일반적인 일본 도심 호텔들과 비교했을 때 객실 사이즈가 결코 작지 않아 훨씬 쾌적한 휴식이 가능합니다.</li>
+                    <li>저녁 시간 맛집 탐방과 쇼핑을 즐기기에 이보다 더 완벽한 장소는 없습니다.</li>
                 </ul>
-                <img src="Mercure.jpg" alt="머큐어 사진" class="map-img">
+                <img src="Mercure.jpg" alt="머큐어 삿포로 사진" class="map-img">
             </div>
 
             <div id="day1" class="tab-panel">
@@ -216,7 +214,7 @@
                         <br><span style="font-size: 0.82rem; color: #666; font-weight: 400; padding-left: 5px;">- 북해도의 명물 과자 제작 공정 견학 및 영국식 정원을 만끽하는 테마파크</span>
                     </li>
                     <li>머큐어 삿포로 호텔 Check-in</li>
-                    <li style="color:var(--primary); font-weight:bold;">'겨울 왕국이 녹아내린 자리에 초록빛 생명력이 피어나는 도시' 삿포로 자유시간</li>
+                    <li style="color:var(--primary); font-weight:bold;">삿포로 자유시간</li>
                 </ul>
             </div>
             
